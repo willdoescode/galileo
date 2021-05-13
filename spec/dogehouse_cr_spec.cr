@@ -1,9 +1,9 @@
 require "./spec_helper"
 
 describe DogehouseCr do
-  it "works" do
+  it "auth" do
     client = DogehouseCr.new ENV["ACCESS_TOKEN"], ENV["REFRESH_TOKEN"]
     client.join_room ENV["ROOM_ID"]
-    client.run
+    client.test_run
   end
 end

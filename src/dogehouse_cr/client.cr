@@ -1,4 +1,5 @@
 require "http/web_socket"
+require "spec"
 require "json"
 
 API_URL = "wss://api.dogehouse.tv/socket"
@@ -49,6 +50,16 @@ class DogehouseCr::Client
   end
 
   def run
+    @ws.run
+  end
+
+  def test_run
+    spawn do
+      sleep 3
+      Spec.finish_run
+      exit 0
+    end
+
     @ws.run
   end
 end
