@@ -44,7 +44,7 @@ class DogehouseCr::Client < DogeEntity
 
   def setup_run
     @ws.on_message do |msg|
-      if msg == "ping"
+      if msg == "pong"
         if !@ping_callback.nil?
           @ping_callback.not_nil!.call Context.new(@ws)
         end
@@ -52,7 +52,13 @@ class DogehouseCr::Client < DogeEntity
       end
 
       if !@message_callback.nil?
-        @message_callback.not_nil!.call Context.new(@ws), msg
+        msg_json = Hash(String, JSON::Any).from_json msg
+        puts msg
+        if msg_json["op"]?
+          if msg_json["op"] === "new_chat_msg"
+            @message_callback.not_nil!.call Context.new(@ws), decode_message msg_json["d"].as_h["msg"].as_h["tokens"].as_a.map { |a| a.as_h }
+          end
+        end
       end
     end
 

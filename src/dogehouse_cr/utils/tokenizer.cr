@@ -1,3 +1,5 @@
+require "json"
+
 def encode_message(message : String)
   message.split(" ").map do |word|
     if word.starts_with? "@"
@@ -8,4 +10,16 @@ def encode_message(message : String)
       {type: "text", value: word}
     end
   end
+end
+
+def decode_message(message : Array(Hash(String, JSON::Any))) : String
+  message.map do |word|
+    if word["t"] == "mention"
+      "@#{word["v"].as_s}"
+    elsif word["t"] == "link"
+      word["v"].as_s
+    else
+      word["v"].as_s
+    end
+  end.join " "
 end

@@ -4,7 +4,10 @@ client = DogehouseCr.new ENV["ACCESS_TOKEN"], ENV["REFRESH_TOKEN"]
 client.join_room ENV["ROOM_ID"]
 
 client.on_message do |context, msg|
-  puts msg
+  if msg.starts_with? "/echo "
+    context.send_message msg[5..]
+  end
+  puts "MSG: #{msg}"
 end
 
 client.on_ping do |context|
