@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.36.1">
+<meta name="crystal_docs.project_version" content="main-dev">
+<meta name="crystal_docs.project_name" content="dogehouse_cr">
+
+
+
+<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../js/doc.js"></script>
+
+  <meta name="repository-name" content="dogehouse_cr">
+  <title>DogehouseCr::Client - dogehouse_cr main-dev</title>
+  <script type="text/javascript">
+    CrystalDocs.base_path = "../";
+  </script>
+</head>
+<body>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="../index.html">
+          dogehouse_cr
+        </a>
+      </h1>
+
+      <span class="project-version">
+        main-dev
+      </span>
+    </div>
+  </div>
+
+  <div class="search-results hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class=" " data-id="dogehouse_cr/toplevel" data-name="top level namespace">
+      <a href="../toplevel.html">Top Level Namespace</a>
+      
+    </li>
+  
+  <li class=" " data-id="dogehouse_cr/Context" data-name="context">
+      <a href="../Context.html">Context</a>
+      
+    </li>
+  
+  <li class=" " data-id="dogehouse_cr/DogeEntity" data-name="dogeentity">
+      <a href="../DogeEntity.html">DogeEntity</a>
+      
+    </li>
+  
+  <li class="parent open current" data-id="dogehouse_cr/DogehouseCr" data-name="dogehousecr">
+      <a href="../DogehouseCr.html">DogehouseCr</a>
+      
+        <ul>
+  
+  <li class=" current" data-id="dogehouse_cr/DogehouseCr/Client" data-name="dogehousecr::client">
+      <a href="../DogehouseCr/Client.html">Client</a>
+      
+    </li>
+  
+  <li class=" " data-id="dogehouse_cr/DogehouseCr/User" data-name="dogehousecr::user">
+      <a href="../DogehouseCr/User.html">User</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> DogehouseCr::Client
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../DogehouseCr/Client.html">DogehouseCr::Client</a></li><li class="superclass"><a href="../DogeEntity.html">DogeEntity</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+  <h2>
+    <a id="overview" class="anchor" href="#overview">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Overview
+  </h2>
+
+  <p>Base dogehouse cilent to interface with api with</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="defined-in" class="anchor" href="#defined-in">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Defined in:
+  </h2>
+  
+    
+      dogehouse_cr/client.cr
+    
+    <br/>
+  
+
+
+
+
+
+  <h2>
+    <a id="constructors" class="anchor" href="#constructors">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructors
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new(token:String,refresh_token:String)-class-method" class="signature"><strong>.new</strong>(token : String, refresh_token : String)</a>
+        
+          <div class="summary"><p>Client takes your dogehouse token and refreshToken in order to auth</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+  <h2>
+    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#message_callback:Context,String-%3ENil?-instance-method" class="signature"><strong>#message_callback</strong> : Context, String -> Nil?</a>
+        
+          <div class="summary"><p>Optional message_callback property Add a message callback function with .on_message <code></code>` client.on_message |context, msg|   puts msg end <code></code>`</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#message_callback=(message_callback:Context,String-%3ENil?)-instance-method" class="signature"><strong>#message_callback=</strong>(message_callback : Context, String -> Nil?)</a>
+        
+          <div class="summary"><p>Optional message_callback property Add a message callback function with .on_message <code></code>` client.on_message |context, msg|   puts msg end <code></code>`</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_message(&block:Context,String-%3ENil)-instance-method" class="signature"><strong>#on_message</strong>(&block : Context, String -> Nil)</a>
+        
+          <div class="summary"><p>Add a message callback on_message takes block with context parameter and String parameter <code></code>` client.on_message |context, msg|   puts msg end <code></code>`</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_ping(&block:Context-%3ENil)-instance-method" class="signature"><strong>#on_ping</strong>(&block : Context -> Nil)</a>
+        
+          <div class="summary"><p>Add a ping callback on_ping takes block with context parameter <code></code>` client.on_ping |context|   puts "ping" end <code></code>`</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#ping_callback:Context-%3ENil?-instance-method" class="signature"><strong>#ping_callback</strong> : Context -> Nil?</a>
+        
+          <div class="summary"><p>Optional ping_callback property Add a message callback function with .on_ping <code></code>` client.on_ping |context|   puts "ping" end <code></code>`</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#ping_callback=(ping_callback:Context-%3ENil?)-instance-method" class="signature"><strong>#ping_callback=</strong>(ping_callback : Context -> Nil?)</a>
+        
+          <div class="summary"><p>Optional ping_callback property Add a message callback function with .on_ping <code></code>` client.on_ping |context|   puts "ping" end <code></code>`</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#raw_send(msg)-instance-method" class="signature"><strong>#raw_send</strong>(msg)</a>
+        
+          <div class="summary"><p>Send raw messages api without wrapper</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#run-instance-method" class="signature"><strong>#run</strong></a>
+        
+          <div class="summary"><p>Run the client This will start the message loop</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#setup_run-instance-method" class="signature"><strong>#setup_run</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#test_run(time:Int)-instance-method" class="signature"><strong>#test_run</strong>(time : Int)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#ws:HTTP::WebSocket-instance-method" class="signature"><strong>#ws</strong> : HTTP::WebSocket</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#ws=(ws:HTTP::WebSocket)-instance-method" class="signature"><strong>#ws=</strong>(ws : HTTP::WebSocket)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="../DogeEntity.html">DogeEntity</a></code></h3>
+  
+  
+    <a href="../DogeEntity.html#join_room(roomId:String)-instance-method" class="tooltip">
+      <span>join_room(roomId : String)</span>
+    join_room</a>, 
+    
+  
+    <a href="../DogeEntity.html#send_message(message:String)-instance-method" class="tooltip">
+      <span>send_message(message : String)</span>
+    send_message</a>
+    
+  
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+</div>
+
+
+  <h2>
+    <a id="constructor-detail" class="anchor" href="#constructor-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructor Detail
+  </h2>
+  
+    <div class="entry-detail" id="new(token:String,refresh_token:String)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(token : String, refresh_token : String)
+
+        <a class="method-permalink" href="#new(token:String,refresh_token:String)-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Client takes your dogehouse token and refreshToken in order to auth</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+
+
+  <h2>
+    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="message_callback:Context,String->Nil?-instance-method">
+      <div class="signature">
+        
+        def <strong>message_callback</strong> : <a href="../Context.html">Context</a>, String -> Nil?
+
+        <a class="method-permalink" href="#message_callback:Context,String-%3ENil?-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Optional message_callback property
+Add a message callback function with .on_message</p>
+
+<pre><code class="language-crystal">client.on_message <span class="o">|</span>context, msg<span class="o">|</span>
+  puts msg
+<span class="k">end</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="message_callback=(message_callback:Context,String->Nil?)-instance-method">
+      <div class="signature">
+        
+        def <strong>message_callback=</strong>(message_callback : <a href="../Context.html">Context</a>, String -> Nil?)
+
+        <a class="method-permalink" href="#message_callback=(message_callback:Context,String-%3ENil?)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Optional message_callback property
+Add a message callback function with .on_message</p>
+
+<pre><code class="language-crystal">client.on_message <span class="o">|</span>context, msg<span class="o">|</span>
+  puts msg
+<span class="k">end</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_message(&block:Context,String->Nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_message</strong>(&block : <a href="../Context.html">Context</a>, String -> Nil)
+
+        <a class="method-permalink" href="#on_message(&block:Context,String-%3ENil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Add a message callback
+on_message takes block with context parameter and String parameter</p>
+
+<pre><code class="language-crystal">client.on_message <span class="o">|</span>context, msg<span class="o">|</span>
+  puts msg
+<span class="k">end</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_ping(&block:Context->Nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_ping</strong>(&block : <a href="../Context.html">Context</a> -> Nil)
+
+        <a class="method-permalink" href="#on_ping(&block:Context-%3ENil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Add a ping callback
+on_ping takes block with context parameter</p>
+
+<pre><code class="language-crystal">client.on_ping <span class="o">|</span>context<span class="o">|</span>
+  puts <span class="s">&quot;ping&quot;</span>
+<span class="k">end</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="ping_callback:Context->Nil?-instance-method">
+      <div class="signature">
+        
+        def <strong>ping_callback</strong> : <a href="../Context.html">Context</a> -> Nil?
+
+        <a class="method-permalink" href="#ping_callback:Context-%3ENil?-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Optional ping_callback property
+Add a message callback function with .on_ping</p>
+
+<pre><code class="language-crystal">client.on_ping <span class="o">|</span>context<span class="o">|</span>
+  puts <span class="s">&quot;ping&quot;</span>
+<span class="k">end</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="ping_callback=(ping_callback:Context->Nil?)-instance-method">
+      <div class="signature">
+        
+        def <strong>ping_callback=</strong>(ping_callback : <a href="../Context.html">Context</a> -> Nil?)
+
+        <a class="method-permalink" href="#ping_callback=(ping_callback:Context-%3ENil?)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Optional ping_callback property
+Add a message callback function with .on_ping</p>
+
+<pre><code class="language-crystal">client.on_ping <span class="o">|</span>context<span class="o">|</span>
+  puts <span class="s">&quot;ping&quot;</span>
+<span class="k">end</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="raw_send(msg)-instance-method">
+      <div class="signature">
+        
+        def <strong>raw_send</strong>(msg)
+
+        <a class="method-permalink" href="#raw_send(msg)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Send raw messages api without wrapper</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="run-instance-method">
+      <div class="signature">
+        
+        def <strong>run</strong>
+
+        <a class="method-permalink" href="#run-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Run the client
+This will start the message loop</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="setup_run-instance-method">
+      <div class="signature">
+        
+        def <strong>setup_run</strong>
+
+        <a class="method-permalink" href="#setup_run-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="test_run(time:Int)-instance-method">
+      <div class="signature">
+        
+        def <strong>test_run</strong>(time : Int)
+
+        <a class="method-permalink" href="#test_run(time:Int)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="ws:HTTP::WebSocket-instance-method">
+      <div class="signature">
+        
+        def <strong>ws</strong> : HTTP::WebSocket
+
+        <a class="method-permalink" href="#ws:HTTP::WebSocket-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="ws=(ws:HTTP::WebSocket)-instance-method">
+      <div class="signature">
+        
+        def <strong>ws=</strong>(ws : HTTP::WebSocket)
+
+        <a class="method-permalink" href="#ws=(ws:HTTP::WebSocket)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>
