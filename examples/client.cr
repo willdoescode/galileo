@@ -1,11 +1,19 @@
 require "dogehouse_cr"
 
 client = DogehouseCr.new ENV["ACCESS_TOKEN"], ENV["REFRESH_TOKEN"]
+client.join_room ENV["ROOM_ID"]
 
-client.on_message do |msg|
+client.on_message do |context, msg|
   puts msg
 end
 
-client.join_room ENV["ROOM_ID"]
+client.on_ping do |context|
+  puts "ping"
+end
 
+# spawn do
+#   loop do
+#     client.send_message "@IvanCodes"
+#   end
+# end
 client.run

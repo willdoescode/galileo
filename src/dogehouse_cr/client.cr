@@ -11,6 +11,7 @@ PING_TIMEOUT = 8
 class DogehouseCr::Client < DogeEntity
   property ws : HTTP::WebSocket
   property message_callback : (Context, String -> Nil)?
+  property ping_callback : (Context -> Nil)?
 
   def initialize(@token : String, @refresh_token : String)
     @ws = HTTP::WebSocket.new(URI.parse(API_URL))
@@ -37,9 +38,20 @@ class DogehouseCr::Client < DogeEntity
     @message_callback = block
   end
 
+  def on_ping(&block : Context -> Nil)
+    @ping_callback = block
+  end
+
   def setup_run
-    if !@message_callback.nil?
-      @ws.on_message do |msg|
+    @ws.on_message do |msg|
+      if msg == "ping"
+        if !@ping_callback.nil?
+          @ping_callback.not_nil!.call Context.new(@ws)
+        end
+        next
+      end
+
+      if !@message_callback.nil?
         @message_callback.not_nil!.call Context.new(@ws), msg
       end
     end
