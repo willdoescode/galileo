@@ -53,13 +53,12 @@ class DogehouseCr::Client
     @ws.run
   end
 
-  def test_run
+  def test_run(time : Int)
     spawn do
-      sleep 3
-      Spec.finish_run
-      exit 0
+      @ws.run
     end
 
-    @ws.run
+    sleep time
+    return
   end
 end
