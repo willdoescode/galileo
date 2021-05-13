@@ -11,4 +11,14 @@ describe DogehouseCr do
     client.join_room ENV["ROOM_ID"]
     client.test_run 3
   end
+
+  it "receives messages" do
+    client = DogehouseCr.new ENV["ACCESS_TOKEN"], ENV["REFRESH_TOKEN"]
+
+    client.on_message do |msg|
+      puts msg
+    end
+
+    client.test_run 3
+  end
 end

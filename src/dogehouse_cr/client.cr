@@ -1,14 +1,16 @@
 require "http/web_socket"
 require "spec"
 require "json"
+require "./user.cr"
 
 API_URL = "wss://api.dogehouse.tv/socket"
 PING_TIMEOUT = 8
 
 class DogehouseCr::Client
   property ws : HTTP::WebSocket
+  property message_callback : (String -> Nil)?
 
-  def initialize(@token : String, @refreshToken : String)
+  def initialize(@token : String, @refresh_token : String)
     @ws = HTTP::WebSocket.new(URI.parse(API_URL))
 
     @ws.send(
@@ -16,7 +18,7 @@ class DogehouseCr::Client
         "op" => "auth", 
         "d" => {
           "accessToken" => @token, 
-          "refreshToken" => @refreshToken
+          "refreshToken" => @refresh_token
         }, 
         "reconnectToVoice" => false,
         "muted" => true,
@@ -49,11 +51,27 @@ class DogehouseCr::Client
     @ws.send msg
   end
 
+  def on_message(&block : String -> Nil)
+    @message_callback = block
+  end
+
+  def setup_run
+    if !@message_callback.nil?
+      @ws.on_message do |msg|
+        @message_callback.not_nil!.call msg
+      end
+    end
+  end
+
   def run
+    setup_run
+
     @ws.run
   end
 
   def test_run(time : Int)
+    setup_run
+
     spawn do
       @ws.run
     end
