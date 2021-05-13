@@ -10,10 +10,8 @@ describe DogehouseCr do
     end
 
     spawn do
-      x = 0
       loop do
-        x += 1
-        client.send_message x.to_s
+        client.send_message "@replix"
       end
     end
     client.run
