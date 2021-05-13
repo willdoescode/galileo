@@ -3,13 +3,14 @@ require "spec"
 require "json"
 require "./user.cr"
 require "./utils/tokenizer.cr"
+require "./entity.cr"
 
 API_URL = "wss://api.dogehouse.tv/socket"
 PING_TIMEOUT = 8
 
-class DogehouseCr::Client
+class DogehouseCr::Client < DogeEntity
   property ws : HTTP::WebSocket
-  property message_callback : (String -> Nil)?
+  property message_callback : (Context, String -> Nil)?
 
   def initialize(@token : String, @refresh_token : String)
     @ws = HTTP::WebSocket.new(URI.parse(API_URL))
@@ -28,43 +29,18 @@ class DogehouseCr::Client
     )
   end
 
-  def join_room(roomId : String)
-    @ws.send(
-      {
-        "op" => "room:join",
-         "d" => {
-           "roomId" => roomId
-         },
-         "ref" => "[uuid]",
-         "v" => "0.2.0"
-      }.to_json
-    ) 
-  end
-
-  def send_message(message : String)
-    @ws.send(
-      {
-        "op" => "chat:send_msg",
-        "d" => {
-          "tokens" => encode_message message
-        },
-        "v" => "0.2.0"
-      }.to_json
-    )
-  end
-
   def raw_send(msg)
     @ws.send msg
   end
 
-  def on_message(&block : String -> Nil)
+  def on_message(&block : Context, String -> Nil)
     @message_callback = block
   end
 
   def setup_run
     if !@message_callback.nil?
       @ws.on_message do |msg|
-        @message_callback.not_nil!.call msg
+        @message_callback.not_nil!.call Context.new(@ws), msg
       end
     end
 

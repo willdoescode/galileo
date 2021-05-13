@@ -5,13 +5,13 @@ describe DogehouseCr do
     client = DogehouseCr.new ENV["ACCESS_TOKEN"], ENV["REFRESH_TOKEN"]
     client.join_room ENV["ROOM_ID"]
 
-    client.on_message do |msg|
-      puts msg
+    client.on_message do |client, msg|
+      client.send_message "hello"
     end
 
     spawn do
       loop do
-        client.send_message "@replex"
+        client.send_message "@IvanCodes"
       end
     end
     client.run
