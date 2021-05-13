@@ -20,7 +20,7 @@ class DogehouseCr::Client
         }, 
         "reconnectToVoice" => false,
         "muted" => true,
-        "platform" => "dogehouse-cr"
+        "platform" => "dogehouse_cr"
       }.to_json
     )
 
