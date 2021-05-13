@@ -8,11 +8,29 @@ require "./entity.cr"
 API_URL = "wss://api.dogehouse.tv/socket"
 PING_TIMEOUT = 8
 
+# Base dogehouse cilent to interface with api with
 class DogehouseCr::Client < DogeEntity
   property ws : HTTP::WebSocket
+
+  # Optional message_callback property
+  # Add a message callback function with .on_message
+  # ```
+  # client.on_message |context, msg|
+  #   puts msg
+  # end
+  # ```
   property message_callback : (Context, String -> Nil)?
+
+  # Optional ping_callback property
+  # Add a message callback function with .on_ping
+  # ```
+  # client.on_ping |context|
+  #   puts "ping"
+  # end
+  # ```
   property ping_callback : (Context -> Nil)?
 
+  # Client takes your dogehouse token and refreshToken in order to auth
   def initialize(@token : String, @refresh_token : String)
     @ws = HTTP::WebSocket.new(URI.parse(API_URL))
 
@@ -30,14 +48,29 @@ class DogehouseCr::Client < DogeEntity
     )
   end
 
+  # Send raw messages api without wrapper
   def raw_send(msg)
     @ws.send msg
   end
 
+  # Add a message callback
+  # on_message takes block with context parameter and String parameter
+  # ```
+  # client.on_message |context, msg|
+  #   puts msg
+  # end
+  # ```
   def on_message(&block : Context, String -> Nil)
     @message_callback = block
   end
 
+  # Add a ping callback
+  # on_ping takes block with context parameter
+  # ```
+  # client.on_ping |context|
+  #   puts "ping"
+  # end
+  # ```
   def on_ping(&block : Context -> Nil)
     @ping_callback = block
   end
@@ -78,6 +111,8 @@ class DogehouseCr::Client < DogeEntity
     end
   end
 
+  # Run the client
+  # This will start the message loop
   def run
     setup_run
 

@@ -2,6 +2,10 @@ require "http/web_socket"
 require "json"
 
 class DogeEntity
+  # Sends message to whatever room currently in
+  # ```
+  # client.send_message "msg"
+  # ```
   def send_message(message : String)
     @ws.send(
       {
@@ -14,6 +18,10 @@ class DogeEntity
     )
   end
 
+  # Join room will join the room associated with a roomId
+  # ```
+  # client.join_room "roomid"
+  # ```
   def join_room(roomId : String)
     @ws.send(
       {
