@@ -2,6 +2,8 @@
 
 A dogehouse wrapper for crystal
 
+## [Docs](http://docs.will.tools/docs/)
+
 ## Installation
 
 1. Add the dependency to your `shard.yml`:
