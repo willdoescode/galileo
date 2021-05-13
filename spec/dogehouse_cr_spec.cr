@@ -11,7 +11,7 @@ describe DogehouseCr do
 
     spawn do
       loop do
-        client.send_message "@replix"
+        client.send_message "@replex"
       end
     end
     client.run
