@@ -2,6 +2,7 @@ require "http/web_socket"
 require "spec"
 require "json"
 require "./user.cr"
+require "./utils/tokenizer.cr"
 
 API_URL = "wss://api.dogehouse.tv/socket"
 PING_TIMEOUT = 8
@@ -25,13 +26,6 @@ class DogehouseCr::Client
         "platform" => "dogehouse_cr"
       }.to_json
     )
-
-    spawn do
-      loop do
-        @ws.send "ping"
-        sleep PING_TIMEOUT
-      end
-    end
   end
 
   def join_room(roomId : String)
@@ -47,6 +41,18 @@ class DogehouseCr::Client
     ) 
   end
 
+  def send_message(message : String)
+    @ws.send(
+      {
+        "op" => "chat:send_msg",
+        "d" => {
+          "tokens" => encode_message message
+        },
+        "v" => "0.2.0"
+      }.to_json
+    )
+  end
+
   def raw_send(msg)
     @ws.send msg
   end
@@ -59,6 +65,13 @@ class DogehouseCr::Client
     if !@message_callback.nil?
       @ws.on_message do |msg|
         @message_callback.not_nil!.call msg
+      end
+    end
+
+    spawn do
+      loop do
+        @ws.send "ping"
+        sleep PING_TIMEOUT
       end
     end
   end
