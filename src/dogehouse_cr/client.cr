@@ -56,7 +56,15 @@ class DogehouseCr::Client < DogeEntity
         puts msg
         if msg_json["op"]?
           if msg_json["op"] === "new_chat_msg"
-            @message_callback.not_nil!.call Context.new(@ws), decode_message msg_json["d"].as_h["msg"].as_h["tokens"].as_a.map { |a| a.as_h }
+            @message_callback.not_nil!.call(
+              Context.new(@ws),
+              decode_message(
+                msg_json["d"]
+                .as_h["msg"]
+                .as_h["tokens"]
+                .as_a.map { |a| a.as_h }
+              )
+            )
           end
         end
       end
