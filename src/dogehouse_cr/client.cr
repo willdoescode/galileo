@@ -2,6 +2,7 @@ require "http/web_socket"
 require "json"
 
 API_URL = "wss://api.dogehouse.tv/socket"
+PING_TIMEOUT = 8
 
 class DogehouseCr::Client
   property ws : HTTP::WebSocket
@@ -21,6 +22,13 @@ class DogehouseCr::Client
         "platform" => "dogehouse-cr"
       }.to_json
     )
+
+    spawn do
+      loop do
+        @ws.send "ping"
+        sleep PING_TIMEOUT
+      end
+    end
   end
 
   def join_room(roomId : String)
@@ -34,6 +42,10 @@ class DogehouseCr::Client
          "v" => "0.2.0"
       }.to_json
     ) 
+  end
+
+  def raw_send(msg)
+    @ws.send msg
   end
 
   def run
