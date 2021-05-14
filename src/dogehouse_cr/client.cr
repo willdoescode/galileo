@@ -230,7 +230,6 @@ class DogehouseCr::Client
             )
           end
         elsif msg_json["op"] == "fetch_done"
-          puts msg_json
           payload = msg_json["d"]
             .as_h["room"]
             .as_h
