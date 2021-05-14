@@ -53,6 +53,8 @@ class DogehouseCr::Client < BaseEntity
   # ```
   property join_room_callback : (Context, Room -> Nil)?
 
+  property new_tokens_callback : (Context, String, String -> Nil)?
+
   # Client takes your dogehouse token and refreshToken in order to auth
   def initialize(@token : String, @refresh_token : String)
     @ws = HTTP::WebSocket.new(URI.parse(API_URL))
@@ -128,6 +130,10 @@ class DogehouseCr::Client < BaseEntity
     @ready_callback = block
   end
 
+  def on_new_tokens(&block : Context, String, String -> Nil)
+    @new_tokens_callback = block
+  end
+
   def setup_run
     @ws.on_message do |msg|
       if !@all_callback.nil?
@@ -168,6 +174,17 @@ class DogehouseCr::Client < BaseEntity
                 m["followsYou"].as_bool? ? true : false,
                 m["botOwnerId"].as_s
               )
+            )
+          end
+        elsif msg_json["op"] == "new-tokens"
+          m = msg_json["d"]
+            .as_h
+
+          if !@new_tokens_callback.nil?
+            @new_tokens_callback.not_nil!.call(
+              Context.new(@ws),
+              m["accessToken"].as_s,
+              m["refreshToken"].as_s
             )
           end
         elsif msg_json["op"] == "new_chat_msg"
