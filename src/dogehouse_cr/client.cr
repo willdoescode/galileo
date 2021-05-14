@@ -10,7 +10,9 @@ PING_TIMEOUT = 8
 # Base dogehouse cilent to interface with api with
 class DogehouseCr::Client
   @message_queue = Array(String).new
-  @delay = 1
+
+  # The chat delay withing rooms
+  @delay = 1000000
 
   # Websocket connection state
   property ws : HTTP::WebSocket
@@ -242,7 +244,7 @@ class DogehouseCr::Client
               )
             )
           end
-          @delay = payload["chatThrottle"].as_i
+          @delay = payload["chatThrottle"].as_i * 1000000
         end
       end
     end
@@ -268,7 +270,7 @@ class DogehouseCr::Client
           )
           @message_queue = @message_queue[1..]
         end
-        sleep @delay
+        sleep Time::Span.new nanoseconds: @delay
       end
     end
   end
