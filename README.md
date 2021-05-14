@@ -3,6 +3,7 @@
 A dogehouse wrapper for crystal
 
 ## [Docs](http://docs.will.tools/docs/)
+## See [examples/](examples/) for example programs
 
 ## Installation
 
