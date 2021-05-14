@@ -10,10 +10,10 @@ class DogeEntity
     @ws.send(
       {
         "op" => "chat:send_msg",
-        "d" => {
-          "tokens" => encode_message message
+        "d"  => {
+          "tokens" => encode_message message,
         },
-        "v" => "0.2.0"
+        "v" => "0.2.0",
       }.to_json
     )
   end
@@ -26,13 +26,13 @@ class DogeEntity
     @ws.send(
       {
         "op" => "room:join",
-         "d" => {
-           "roomId" => roomId
-         },
-         "ref" => "[uuid]",
-         "v" => "0.2.0"
+        "d"  => {
+          "roomId" => roomId,
+        },
+        "ref" => "[uuid]",
+        "v"   => "0.2.0",
       }.to_json
-    ) 
+    )
   end
 end
 
@@ -40,5 +40,15 @@ class Context < DogeEntity
   property ws : HTTP::WebSocket
 
   def initialize(@ws : HTTP::WebSocket)
+  end
+end
+
+class Room
+  getter id : String
+  getter name : String
+  getter description : String
+  getter is_private : Bool
+
+  def initialize(@id : String, @name : String, @description : String, @is_private : Bool)
   end
 end

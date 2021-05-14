@@ -16,6 +16,10 @@ describe DogehouseCr do
       puts "ping"
     end
 
+    client.on_room_join do |context, room|
+      puts "Joined room: #{room.name}"
+    end
+
     # spawn do
     #   loop do
     #     client.send_message "@IvanCodes"
