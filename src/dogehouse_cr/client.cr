@@ -12,6 +12,12 @@ class DogehouseCr::Client < BaseEntity
   # Websocket connection state
   property ws : HTTP::WebSocket
 
+  # Optional on ready callback property
+  # ```
+  # client.on_ready do |context, user|
+  #   puts user.display_name
+  # end
+  # ```
   property ready_callback : (Context, User -> Nil)?
 
   # Optional message_callback property
@@ -112,6 +118,12 @@ class DogehouseCr::Client < BaseEntity
     @room_join_callback = block
   end
 
+  # Add ready callback
+  # ```
+  # client.on_ready do |context, user|
+  #   puts user.display_name
+  # end
+  # ```
   def on_ready(&block : Context, User -> Nil)
     @ready_callback = block
   end

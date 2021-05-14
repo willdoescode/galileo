@@ -56,13 +56,13 @@
       
     </li>
   
-  <li class=" " data-id="dogehouse_cr/Context" data-name="context">
-      <a href="../Context.html">Context</a>
+  <li class=" " data-id="dogehouse_cr/BaseEntity" data-name="baseentity">
+      <a href="../BaseEntity.html">BaseEntity</a>
       
     </li>
   
-  <li class=" " data-id="dogehouse_cr/DogeEntity" data-name="dogeentity">
-      <a href="../DogeEntity.html">DogeEntity</a>
+  <li class=" " data-id="dogehouse_cr/Context" data-name="context">
+      <a href="../Context.html">Context</a>
       
     </li>
   
@@ -76,6 +76,16 @@
       
     </li>
   
+  <li class=" " data-id="dogehouse_cr/DogehouseCr/Message" data-name="dogehousecr::message">
+      <a href="../DogehouseCr/Message.html">Message</a>
+      
+    </li>
+  
+  <li class=" " data-id="dogehouse_cr/DogehouseCr/Room" data-name="dogehousecr::room">
+      <a href="../DogehouseCr/Room.html">Room</a>
+      
+    </li>
+  
   <li class=" " data-id="dogehouse_cr/DogehouseCr/User" data-name="dogehousecr::user">
       <a href="../DogehouseCr/User.html">User</a>
       
@@ -83,11 +93,6 @@
   
 </ul>
 
-      
-    </li>
-  
-  <li class=" " data-id="dogehouse_cr/Room" data-name="room">
-      <a href="../Room.html">Room</a>
       
     </li>
   
@@ -105,7 +110,7 @@
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../DogehouseCr/Client.html">DogehouseCr::Client</a></li><li class="superclass"><a href="../DogeEntity.html">DogeEntity</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../DogehouseCr/Client.html">DogehouseCr::Client</a></li><li class="superclass"><a href="../BaseEntity.html">BaseEntity</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
 
 
 
@@ -215,14 +220,14 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#message_callback:Context,String-%3ENil?-instance-method" class="signature"><strong>#message_callback</strong> : Context, String -> Nil?</a>
+        <a href="#message_callback:Context,Message-%3ENil?-instance-method" class="signature"><strong>#message_callback</strong> : Context, Message -> Nil?</a>
         
           <div class="summary"><p>Optional message_callback property Add a message callback function with .on_message <code></code>` client.on_message do |context, msg|   puts msg end <code></code>`</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#message_callback=(message_callback:Context,String-%3ENil?)-instance-method" class="signature"><strong>#message_callback=</strong>(message_callback : Context, String -> Nil?)</a>
+        <a href="#message_callback=(message_callback:Context,Message-%3ENil?)-instance-method" class="signature"><strong>#message_callback=</strong>(message_callback : Context, Message -> Nil?)</a>
         
           <div class="summary"><p>Optional message_callback property Add a message callback function with .on_message <code></code>` client.on_message do |context, msg|   puts msg end <code></code>`</p></div>
         
@@ -236,7 +241,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#on_message(&block:Context,String-%3ENil)-instance-method" class="signature"><strong>#on_message</strong>(&block : Context, String -> Nil)</a>
+        <a href="#on_message(&block:Context,Message-%3ENil)-instance-method" class="signature"><strong>#on_message</strong>(&block : Context, Message -> Nil)</a>
         
           <div class="summary"><p>Add a message callback on_message takes block with context parameter and String parameter <code></code>` client.on_message do |context, msg|   puts msg end <code></code>`</p></div>
         
@@ -246,6 +251,13 @@
         <a href="#on_ping(&block:Context-%3ENil)-instance-method" class="signature"><strong>#on_ping</strong>(&block : Context -> Nil)</a>
         
           <div class="summary"><p>Add a ping callback on_ping takes block with context parameter <code></code>` client.on_ping do |context|   puts "ping" end <code></code>`</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_ready(&block:Context,User-%3ENil)-instance-method" class="signature"><strong>#on_ready</strong>(&block : Context, User -> Nil)</a>
+        
+          <div class="summary"><p>Add ready callback <code></code>` client.on_ready do |context, user|   puts user.display_name end <code></code>`</p></div>
         
       </li>
     
@@ -274,6 +286,20 @@
         <a href="#raw_send(msg)-instance-method" class="signature"><strong>#raw_send</strong>(msg)</a>
         
           <div class="summary"><p>Send raw messages api without wrapper</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#ready_callback:Context,User-%3ENil?-instance-method" class="signature"><strong>#ready_callback</strong> : Context, User -> Nil?</a>
+        
+          <div class="summary"><p>Optional on ready callback property <code></code>` client.on_ready do |context, user|   puts user.display_name end <code></code>`</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#ready_callback=(ready_callback:Context,User-%3ENil?)-instance-method" class="signature"><strong>#ready_callback=</strong>(ready_callback : Context, User -> Nil?)</a>
+        
+          <div class="summary"><p>Optional on ready callback property <code></code>` client.on_ready do |context, user|   puts user.display_name end <code></code>`</p></div>
         
       </li>
     
@@ -320,15 +346,15 @@
   
     
 
-  <h3>Instance methods inherited from class <code><a href="../DogeEntity.html">DogeEntity</a></code></h3>
+  <h3>Instance methods inherited from class <code><a href="../BaseEntity.html">BaseEntity</a></code></h3>
   
   
-    <a href="../DogeEntity.html#join_room(roomId:String)-instance-method" class="tooltip">
+    <a href="../BaseEntity.html#join_room(roomId:String)-instance-method" class="tooltip">
       <span>join_room(roomId : String)</span>
     join_room</a>, 
     
   
-    <a href="../DogeEntity.html#send_message(message:String)-instance-method" class="tooltip">
+    <a href="../BaseEntity.html#send_message(message:String)-instance-method" class="tooltip">
       <span>send_message(message : String)</span>
     send_message</a>
     
@@ -456,7 +482,7 @@
     <div class="entry-detail" id="join_room_callback:Context,Room->Nil?-instance-method">
       <div class="signature">
         
-        def <strong>join_room_callback</strong> : <a href="../Context.html">Context</a>, <a href="../Room.html">Room</a> -> Nil?
+        def <strong>join_room_callback</strong> : <a href="../Context.html">Context</a>, <a href="../DogehouseCr/Room.html">Room</a> -> Nil?
 
         <a class="method-permalink" href="#join_room_callback:Context,Room-%3ENil?-instance-method">#</a>
       </div>
@@ -478,7 +504,7 @@
     <div class="entry-detail" id="join_room_callback=(join_room_callback:Context,Room->Nil?)-instance-method">
       <div class="signature">
         
-        def <strong>join_room_callback=</strong>(join_room_callback : <a href="../Context.html">Context</a>, <a href="../Room.html">Room</a> -> Nil?)
+        def <strong>join_room_callback=</strong>(join_room_callback : <a href="../Context.html">Context</a>, <a href="../DogehouseCr/Room.html">Room</a> -> Nil?)
 
         <a class="method-permalink" href="#join_room_callback=(join_room_callback:Context,Room-%3ENil?)-instance-method">#</a>
       </div>
@@ -497,12 +523,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="message_callback:Context,String->Nil?-instance-method">
+    <div class="entry-detail" id="message_callback:Context,Message->Nil?-instance-method">
       <div class="signature">
         
-        def <strong>message_callback</strong> : <a href="../Context.html">Context</a>, String -> Nil?
+        def <strong>message_callback</strong> : <a href="../Context.html">Context</a>, <a href="../DogehouseCr/Message.html">Message</a> -> Nil?
 
-        <a class="method-permalink" href="#message_callback:Context,String-%3ENil?-instance-method">#</a>
+        <a class="method-permalink" href="#message_callback:Context,Message-%3ENil?-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -521,12 +547,12 @@ Add a message callback function with .on_message</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="message_callback=(message_callback:Context,String->Nil?)-instance-method">
+    <div class="entry-detail" id="message_callback=(message_callback:Context,Message->Nil?)-instance-method">
       <div class="signature">
         
-        def <strong>message_callback=</strong>(message_callback : <a href="../Context.html">Context</a>, String -> Nil?)
+        def <strong>message_callback=</strong>(message_callback : <a href="../Context.html">Context</a>, <a href="../DogehouseCr/Message.html">Message</a> -> Nil?)
 
-        <a class="method-permalink" href="#message_callback=(message_callback:Context,String-%3ENil?)-instance-method">#</a>
+        <a class="method-permalink" href="#message_callback=(message_callback:Context,Message-%3ENil?)-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -569,12 +595,12 @@ All messages recieved in the client will be sent through this callback</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="on_message(&block:Context,String->Nil)-instance-method">
+    <div class="entry-detail" id="on_message(&block:Context,Message->Nil)-instance-method">
       <div class="signature">
         
-        def <strong>on_message</strong>(&block : <a href="../Context.html">Context</a>, String -> Nil)
+        def <strong>on_message</strong>(&block : <a href="../Context.html">Context</a>, <a href="../DogehouseCr/Message.html">Message</a> -> Nil)
 
-        <a class="method-permalink" href="#on_message(&block:Context,String-%3ENil)-instance-method">#</a>
+        <a class="method-permalink" href="#on_message(&block:Context,Message-%3ENil)-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -617,10 +643,33 @@ on_ping takes block with context parameter</p>
       </div>
     </div>
   
+    <div class="entry-detail" id="on_ready(&block:Context,User->Nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_ready</strong>(&block : <a href="../Context.html">Context</a>, <a href="../DogehouseCr/User.html">User</a> -> Nil)
+
+        <a class="method-permalink" href="#on_ready(&block:Context,User-%3ENil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Add ready callback</p>
+
+<pre><code class="language-crystal">client.on_ready <span class="k">do</span> <span class="o">|</span>context, user<span class="o">|</span>
+  puts user.display_name
+<span class="k">end</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="on_room_join(&block:Context,Room->Nil)-instance-method">
       <div class="signature">
         
-        def <strong>on_room_join</strong>(&block : <a href="../Context.html">Context</a>, <a href="../Room.html">Room</a> -> Nil)
+        def <strong>on_room_join</strong>(&block : <a href="../Context.html">Context</a>, <a href="../DogehouseCr/Room.html">Room</a> -> Nil)
 
         <a class="method-permalink" href="#on_room_join(&block:Context,Room-%3ENil)-instance-method">#</a>
       </div>
@@ -698,6 +747,52 @@ Add a message callback function with .on_ping</p>
         <div class="doc">
           
           <p>Send raw messages api without wrapper</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="ready_callback:Context,User->Nil?-instance-method">
+      <div class="signature">
+        
+        def <strong>ready_callback</strong> : <a href="../Context.html">Context</a>, <a href="../DogehouseCr/User.html">User</a> -> Nil?
+
+        <a class="method-permalink" href="#ready_callback:Context,User-%3ENil?-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Optional on ready callback property</p>
+
+<pre><code class="language-crystal">client.on_ready <span class="k">do</span> <span class="o">|</span>context, user<span class="o">|</span>
+  puts user.display_name
+<span class="k">end</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="ready_callback=(ready_callback:Context,User->Nil?)-instance-method">
+      <div class="signature">
+        
+        def <strong>ready_callback=</strong>(ready_callback : <a href="../Context.html">Context</a>, <a href="../DogehouseCr/User.html">User</a> -> Nil?)
+
+        <a class="method-permalink" href="#ready_callback=(ready_callback:Context,User-%3ENil?)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Optional on ready callback property</p>
+
+<pre><code class="language-crystal">client.on_ready <span class="k">do</span> <span class="o">|</span>context, user<span class="o">|</span>
+  puts user.display_name
+<span class="k">end</span></code></pre>
         </div>
       
       <br/>

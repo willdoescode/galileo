@@ -13,7 +13,7 @@
 <script type="text/javascript" src="js/doc.js"></script>
 
   <meta name="repository-name" content="dogehouse_cr">
-  <title>DogehouseCr - dogehouse_cr main-dev</title>
+  <title>BaseEntity - dogehouse_cr main-dev</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "";
   </script>
@@ -56,7 +56,7 @@
       
     </li>
   
-  <li class=" " data-id="dogehouse_cr/BaseEntity" data-name="baseentity">
+  <li class=" current" data-id="dogehouse_cr/BaseEntity" data-name="baseentity">
       <a href="BaseEntity.html">BaseEntity</a>
       
     </li>
@@ -66,7 +66,7 @@
       
     </li>
   
-  <li class="parent open current" data-id="dogehouse_cr/DogehouseCr" data-name="dogehousecr">
+  <li class="parent " data-id="dogehouse_cr/DogehouseCr" data-name="dogehousecr">
       <a href="DogehouseCr.html">DogehouseCr</a>
       
         <ul>
@@ -105,11 +105,12 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">module</span> DogehouseCr
+  <span class="kind">class</span> BaseEntity
 
 </h1>
 
 
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="BaseEntity.html">BaseEntity</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
 
 
 
@@ -120,6 +121,23 @@
 
 
 
+
+
+  <h2>
+    <a id="direct-known-subclasses" class="anchor" href="#direct-known-subclasses">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Direct Known Subclasses
+  </h2>
+  <ul class="other-types-list">
+    
+      <li class="other-type"><a href="Context.html">Context</a></li>
+    
+      <li class="other-type"><a href="DogehouseCr/Client.html">DogehouseCr::Client</a></li>
+    
+  </ul>
 
 
 
@@ -136,34 +154,40 @@
   </h2>
   
     
-      dogehouse_cr.cr
+      dogehouse_cr/entities/base.cr
     
     <br/>
   
-    
-      dogehouse_cr/entities/message.cr
-    
-    <br/>
-  
+
+
+
+
 
 
 
 
 
   <h2>
-    <a id="constructors" class="anchor" href="#constructors">
+    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>
-    Constructors
+    Instance Method Summary
   </h2>
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new(token:String,refreshToken:String)-class-method" class="signature"><strong>.new</strong>(token : String, refreshToken : String)</a>
+        <a href="#join_room(roomId:String)-instance-method" class="signature"><strong>#join_room</strong>(roomId : String)</a>
         
-          <div class="summary"><p>Create a new client with yoru token and refreshToken <code></code>` client = DogehouseCr "token", "refreshToken" <code></code>`</p></div>
+          <div class="summary"><p>Join room will join the room associated with a roomId <code></code>` client.join_room "roomid" <code></code>`</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#send_message(message:String)-instance-method" class="signature"><strong>#send_message</strong>(message : String)</a>
+        
+          <div class="summary"><p>Sends message to whatever room currently in <code></code>` client.send_message "msg" <code></code>`</p></div>
         
       </li>
     
@@ -173,37 +197,57 @@
 
 
 
-
-
-
-
 <div class="methods-inherited">
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
   
 </div>
 
 
+
+
+
+
   <h2>
-    <a id="constructor-detail" class="anchor" href="#constructor-detail">
+    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>
-    Constructor Detail
+    Instance Method Detail
   </h2>
   
-    <div class="entry-detail" id="new(token:String,refreshToken:String)-class-method">
+    <div class="entry-detail" id="join_room(roomId:String)-instance-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(token : String, refreshToken : String)
+        def <strong>join_room</strong>(roomId : String)
 
-        <a class="method-permalink" href="#new(token:String,refreshToken:String)-class-method">#</a>
+        <a class="method-permalink" href="#join_room(roomId:String)-instance-method">#</a>
       </div>
       
         <div class="doc">
           
-          <p>Create a new client with yoru token and refreshToken</p>
+          <p>Join room will join the room associated with a roomId</p>
 
-<pre><code class="language-crystal">client <span class="o">=</span> <span class="t">DogehouseCr</span> <span class="s">&quot;token&quot;</span>, <span class="s">&quot;refreshToken&quot;</span></code></pre>
+<pre><code class="language-crystal">client.join_room <span class="s">&quot;roomid&quot;</span></code></pre>
         </div>
       
       <br/>
@@ -212,10 +256,27 @@
       </div>
     </div>
   
+    <div class="entry-detail" id="send_message(message:String)-instance-method">
+      <div class="signature">
+        
+        def <strong>send_message</strong>(message : String)
 
+        <a class="method-permalink" href="#send_message(message:String)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Sends message to whatever room currently in</p>
 
-
-
+<pre><code class="language-crystal">client.send_message <span class="s">&quot;msg&quot;</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
 
 
 

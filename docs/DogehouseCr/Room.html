@@ -9,13 +9,13 @@
 
 
 
-<link href="css/style.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="js/doc.js"></script>
+<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../js/doc.js"></script>
 
   <meta name="repository-name" content="dogehouse_cr">
-  <title>Context - dogehouse_cr main-dev</title>
+  <title>DogehouseCr::Room - dogehouse_cr main-dev</title>
   <script type="text/javascript">
-    CrystalDocs.base_path = "";
+    CrystalDocs.base_path = "../";
   </script>
 </head>
 <body>
@@ -33,7 +33,7 @@
 
     <div class="project-summary">
       <h1 class="project-name">
-        <a href="index.html">
+        <a href="../index.html">
           dogehouse_cr
         </a>
       </h1>
@@ -52,42 +52,42 @@
     <ul>
   
   <li class=" " data-id="dogehouse_cr/toplevel" data-name="top level namespace">
-      <a href="toplevel.html">Top Level Namespace</a>
+      <a href="../toplevel.html">Top Level Namespace</a>
       
     </li>
   
   <li class=" " data-id="dogehouse_cr/BaseEntity" data-name="baseentity">
-      <a href="BaseEntity.html">BaseEntity</a>
+      <a href="../BaseEntity.html">BaseEntity</a>
       
     </li>
   
-  <li class=" current" data-id="dogehouse_cr/Context" data-name="context">
-      <a href="Context.html">Context</a>
+  <li class=" " data-id="dogehouse_cr/Context" data-name="context">
+      <a href="../Context.html">Context</a>
       
     </li>
   
-  <li class="parent " data-id="dogehouse_cr/DogehouseCr" data-name="dogehousecr">
-      <a href="DogehouseCr.html">DogehouseCr</a>
+  <li class="parent open current" data-id="dogehouse_cr/DogehouseCr" data-name="dogehousecr">
+      <a href="../DogehouseCr.html">DogehouseCr</a>
       
         <ul>
   
   <li class=" " data-id="dogehouse_cr/DogehouseCr/Client" data-name="dogehousecr::client">
-      <a href="DogehouseCr/Client.html">Client</a>
+      <a href="../DogehouseCr/Client.html">Client</a>
       
     </li>
   
   <li class=" " data-id="dogehouse_cr/DogehouseCr/Message" data-name="dogehousecr::message">
-      <a href="DogehouseCr/Message.html">Message</a>
+      <a href="../DogehouseCr/Message.html">Message</a>
       
     </li>
   
-  <li class=" " data-id="dogehouse_cr/DogehouseCr/Room" data-name="dogehousecr::room">
-      <a href="DogehouseCr/Room.html">Room</a>
+  <li class=" current" data-id="dogehouse_cr/DogehouseCr/Room" data-name="dogehousecr::room">
+      <a href="../DogehouseCr/Room.html">Room</a>
       
     </li>
   
   <li class=" " data-id="dogehouse_cr/DogehouseCr/User" data-name="dogehousecr::user">
-      <a href="DogehouseCr/User.html">User</a>
+      <a href="../DogehouseCr/User.html">User</a>
       
     </li>
   
@@ -105,12 +105,12 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">class</span> Context
+  <span class="kind">class</span> DogehouseCr::Room
 
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="Context.html">Context</a></li><li class="superclass"><a href="BaseEntity.html">BaseEntity</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../DogehouseCr/Room.html">DogehouseCr::Room</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
 
 
 
@@ -138,7 +138,7 @@
   </h2>
   
     
-      dogehouse_cr/entities/context.cr
+      dogehouse_cr/entities/room.cr
     
     <br/>
   
@@ -158,7 +158,7 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new(ws:HTTP::WebSocket)-class-method" class="signature"><strong>.new</strong>(ws : HTTP::WebSocket)</a>
+        <a href="#new(id:String,name:String,description:String,is_private:Bool)-class-method" class="signature"><strong>.new</strong>(id : String, name : String, description : String, is_private : Bool)</a>
         
       </li>
     
@@ -179,12 +179,22 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#ws:HTTP::WebSocket-instance-method" class="signature"><strong>#ws</strong> : HTTP::WebSocket</a>
+        <a href="#description:String-instance-method" class="signature"><strong>#description</strong> : String</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#ws=(ws:HTTP::WebSocket)-instance-method" class="signature"><strong>#ws=</strong>(ws : HTTP::WebSocket)</a>
+        <a href="#id:String-instance-method" class="signature"><strong>#id</strong> : String</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#is_private:Bool-instance-method" class="signature"><strong>#is_private</strong> : Bool</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#name:String-instance-method" class="signature"><strong>#name</strong> : String</a>
         
       </li>
     
@@ -195,30 +205,6 @@
 
 
 <div class="methods-inherited">
-  
-    
-
-  <h3>Instance methods inherited from class <code><a href="BaseEntity.html">BaseEntity</a></code></h3>
-  
-  
-    <a href="BaseEntity.html#join_room(roomId:String)-instance-method" class="tooltip">
-      <span>join_room(roomId : String)</span>
-    join_room</a>, 
-    
-  
-    <a href="BaseEntity.html#send_message(message:String)-instance-method" class="tooltip">
-      <span>send_message(message : String)</span>
-    send_message</a>
-    
-  
-
-
-    
-
-
-    
-
-
   
     
 
@@ -252,12 +238,12 @@
     Constructor Detail
   </h2>
   
-    <div class="entry-detail" id="new(ws:HTTP::WebSocket)-class-method">
+    <div class="entry-detail" id="new(id:String,name:String,description:String,is_private:Bool)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(ws : HTTP::WebSocket)
+        def self.<strong>new</strong>(id : String, name : String, description : String, is_private : Bool)
 
-        <a class="method-permalink" href="#new(ws:HTTP::WebSocket)-class-method">#</a>
+        <a class="method-permalink" href="#new(id:String,name:String,description:String,is_private:Bool)-class-method">#</a>
       </div>
       
       <br/>
@@ -280,12 +266,12 @@
     Instance Method Detail
   </h2>
   
-    <div class="entry-detail" id="ws:HTTP::WebSocket-instance-method">
+    <div class="entry-detail" id="description:String-instance-method">
       <div class="signature">
         
-        def <strong>ws</strong> : HTTP::WebSocket
+        def <strong>description</strong> : String
 
-        <a class="method-permalink" href="#ws:HTTP::WebSocket-instance-method">#</a>
+        <a class="method-permalink" href="#description:String-instance-method">#</a>
       </div>
       
       <br/>
@@ -294,12 +280,40 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="ws=(ws:HTTP::WebSocket)-instance-method">
+    <div class="entry-detail" id="id:String-instance-method">
       <div class="signature">
         
-        def <strong>ws=</strong>(ws : HTTP::WebSocket)
+        def <strong>id</strong> : String
 
-        <a class="method-permalink" href="#ws=(ws:HTTP::WebSocket)-instance-method">#</a>
+        <a class="method-permalink" href="#id:String-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="is_private:Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>is_private</strong> : Bool
+
+        <a class="method-permalink" href="#is_private:Bool-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="name:String-instance-method">
+      <div class="signature">
+        
+        def <strong>name</strong> : String
+
+        <a class="method-permalink" href="#name:String-instance-method">#</a>
       </div>
       
       <br/>

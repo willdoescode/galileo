@@ -56,13 +56,13 @@
       
     </li>
   
-  <li class=" " data-id="dogehouse_cr/Context" data-name="context">
-      <a href="../Context.html">Context</a>
+  <li class=" " data-id="dogehouse_cr/BaseEntity" data-name="baseentity">
+      <a href="../BaseEntity.html">BaseEntity</a>
       
     </li>
   
-  <li class=" " data-id="dogehouse_cr/DogeEntity" data-name="dogeentity">
-      <a href="../DogeEntity.html">DogeEntity</a>
+  <li class=" " data-id="dogehouse_cr/Context" data-name="context">
+      <a href="../Context.html">Context</a>
       
     </li>
   
@@ -76,6 +76,16 @@
       
     </li>
   
+  <li class=" " data-id="dogehouse_cr/DogehouseCr/Message" data-name="dogehousecr::message">
+      <a href="../DogehouseCr/Message.html">Message</a>
+      
+    </li>
+  
+  <li class=" " data-id="dogehouse_cr/DogehouseCr/Room" data-name="dogehousecr::room">
+      <a href="../DogehouseCr/Room.html">Room</a>
+      
+    </li>
+  
   <li class=" current" data-id="dogehouse_cr/DogehouseCr/User" data-name="dogehousecr::user">
       <a href="../DogehouseCr/User.html">User</a>
       
@@ -83,11 +93,6 @@
   
 </ul>
 
-      
-    </li>
-  
-  <li class=" " data-id="dogehouse_cr/Room" data-name="room">
-      <a href="../Room.html">Room</a>
       
     </li>
   
@@ -133,7 +138,7 @@
   </h2>
   
     
-      dogehouse_cr/user.cr
+      dogehouse_cr/entities/user.cr
     
     <br/>
   
@@ -153,7 +158,7 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new(ws:HTTP::WebSocket)-class-method" class="signature"><strong>.new</strong>(ws : HTTP::WebSocket)</a>
+        <a href="#new(id:String,username:String,avatar_url:String,banner_url:String,bio:String,online:Bool,staff:Bool,last_online:String,current_room_id:String,display_name:String,num_following:Int32,num_followers:Int32,contributions:Int32,you_are_following:Bool,follows_you:Bool,bot_owner_id:String)-class-method" class="signature"><strong>.new</strong>(id : String, username : String, avatar_url : String, banner_url : String, bio : String, online : Bool, staff : Bool, last_online : String, current_room_id : String, display_name : String, num_following : Int32, num_followers : Int32, contributions : Int32, you_are_following : Bool, follows_you : Bool, bot_owner_id : String)</a>
         
       </li>
     
@@ -174,12 +179,82 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#ws:HTTP::WebSocket-instance-method" class="signature"><strong>#ws</strong> : HTTP::WebSocket</a>
+        <a href="#avatar_url:String-instance-method" class="signature"><strong>#avatar_url</strong> : String</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#ws=(ws:HTTP::WebSocket)-instance-method" class="signature"><strong>#ws=</strong>(ws : HTTP::WebSocket)</a>
+        <a href="#banner_url:String-instance-method" class="signature"><strong>#banner_url</strong> : String</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#bio:String-instance-method" class="signature"><strong>#bio</strong> : String</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#bot_owner_id:String-instance-method" class="signature"><strong>#bot_owner_id</strong> : String</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#contributions:Int32-instance-method" class="signature"><strong>#contributions</strong> : Int32</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#current_room_id:String-instance-method" class="signature"><strong>#current_room_id</strong> : String</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#display_name:String-instance-method" class="signature"><strong>#display_name</strong> : String</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#follows_you:Bool-instance-method" class="signature"><strong>#follows_you</strong> : Bool</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#id:String-instance-method" class="signature"><strong>#id</strong> : String</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#last_online:String-instance-method" class="signature"><strong>#last_online</strong> : String</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#num_followers:Int32-instance-method" class="signature"><strong>#num_followers</strong> : Int32</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#num_following:Int32-instance-method" class="signature"><strong>#num_following</strong> : Int32</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#online:Bool-instance-method" class="signature"><strong>#online</strong> : Bool</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#staff:Bool-instance-method" class="signature"><strong>#staff</strong> : Bool</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#username:String-instance-method" class="signature"><strong>#username</strong> : String</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#you_are_following:Bool-instance-method" class="signature"><strong>#you_are_following</strong> : Bool</a>
         
       </li>
     
@@ -223,12 +298,12 @@
     Constructor Detail
   </h2>
   
-    <div class="entry-detail" id="new(ws:HTTP::WebSocket)-class-method">
+    <div class="entry-detail" id="new(id:String,username:String,avatar_url:String,banner_url:String,bio:String,online:Bool,staff:Bool,last_online:String,current_room_id:String,display_name:String,num_following:Int32,num_followers:Int32,contributions:Int32,you_are_following:Bool,follows_you:Bool,bot_owner_id:String)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(ws : HTTP::WebSocket)
+        def self.<strong>new</strong>(id : String, username : String, avatar_url : String, banner_url : String, bio : String, online : Bool, staff : Bool, last_online : String, current_room_id : String, display_name : String, num_following : Int32, num_followers : Int32, contributions : Int32, you_are_following : Bool, follows_you : Bool, bot_owner_id : String)
 
-        <a class="method-permalink" href="#new(ws:HTTP::WebSocket)-class-method">#</a>
+        <a class="method-permalink" href="#new(id:String,username:String,avatar_url:String,banner_url:String,bio:String,online:Bool,staff:Bool,last_online:String,current_room_id:String,display_name:String,num_following:Int32,num_followers:Int32,contributions:Int32,you_are_following:Bool,follows_you:Bool,bot_owner_id:String)-class-method">#</a>
       </div>
       
       <br/>
@@ -251,12 +326,12 @@
     Instance Method Detail
   </h2>
   
-    <div class="entry-detail" id="ws:HTTP::WebSocket-instance-method">
+    <div class="entry-detail" id="avatar_url:String-instance-method">
       <div class="signature">
         
-        def <strong>ws</strong> : HTTP::WebSocket
+        def <strong>avatar_url</strong> : String
 
-        <a class="method-permalink" href="#ws:HTTP::WebSocket-instance-method">#</a>
+        <a class="method-permalink" href="#avatar_url:String-instance-method">#</a>
       </div>
       
       <br/>
@@ -265,12 +340,208 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="ws=(ws:HTTP::WebSocket)-instance-method">
+    <div class="entry-detail" id="banner_url:String-instance-method">
       <div class="signature">
         
-        def <strong>ws=</strong>(ws : HTTP::WebSocket)
+        def <strong>banner_url</strong> : String
 
-        <a class="method-permalink" href="#ws=(ws:HTTP::WebSocket)-instance-method">#</a>
+        <a class="method-permalink" href="#banner_url:String-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="bio:String-instance-method">
+      <div class="signature">
+        
+        def <strong>bio</strong> : String
+
+        <a class="method-permalink" href="#bio:String-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="bot_owner_id:String-instance-method">
+      <div class="signature">
+        
+        def <strong>bot_owner_id</strong> : String
+
+        <a class="method-permalink" href="#bot_owner_id:String-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="contributions:Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>contributions</strong> : Int32
+
+        <a class="method-permalink" href="#contributions:Int32-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="current_room_id:String-instance-method">
+      <div class="signature">
+        
+        def <strong>current_room_id</strong> : String
+
+        <a class="method-permalink" href="#current_room_id:String-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="display_name:String-instance-method">
+      <div class="signature">
+        
+        def <strong>display_name</strong> : String
+
+        <a class="method-permalink" href="#display_name:String-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="follows_you:Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>follows_you</strong> : Bool
+
+        <a class="method-permalink" href="#follows_you:Bool-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="id:String-instance-method">
+      <div class="signature">
+        
+        def <strong>id</strong> : String
+
+        <a class="method-permalink" href="#id:String-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="last_online:String-instance-method">
+      <div class="signature">
+        
+        def <strong>last_online</strong> : String
+
+        <a class="method-permalink" href="#last_online:String-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="num_followers:Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>num_followers</strong> : Int32
+
+        <a class="method-permalink" href="#num_followers:Int32-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="num_following:Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>num_following</strong> : Int32
+
+        <a class="method-permalink" href="#num_following:Int32-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="online:Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>online</strong> : Bool
+
+        <a class="method-permalink" href="#online:Bool-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="staff:Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>staff</strong> : Bool
+
+        <a class="method-permalink" href="#staff:Bool-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="username:String-instance-method">
+      <div class="signature">
+        
+        def <strong>username</strong> : String
+
+        <a class="method-permalink" href="#username:String-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="you_are_following:Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>you_are_following</strong> : Bool
+
+        <a class="method-permalink" href="#you_are_following:Bool-instance-method">#</a>
       </div>
       
       <br/>
