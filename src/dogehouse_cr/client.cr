@@ -8,64 +8,58 @@ API_URL      = "wss://api.dogehouse.tv/socket"
 PING_TIMEOUT = 8
 
 # Base dogehouse cilent to interface with api with
-class DogehouseCr::Client < BaseEntity
+class DogehouseCr::Client
+  @message_queue = Array(String).new
+
+
   # Websocket connection state
   property ws : HTTP::WebSocket
 
   # Optional on ready callback property
   # ```
-  # client.on_ready do |context, user|
+  # client.on_ready do |user|
   #   puts user.display_name
   # end
   # ```
-  property ready_callback : (Context, User -> Nil)?
+  property ready_callback : (User -> Nil)?
 
   # Optional message_callback property
   # Add a message callback function with .on_message
   # ```
-  # client.on_message do |context, msg|
+  # client.on_message do |msg|
   #   puts msg
   # end
   # ```
-  property message_callback : (Context, Message -> Nil)?
-
-  # Optional ping_callback property
-  # Add a message callback function with .on_ping
-  # ```
-  # client.on_ping do |context|
-  #   puts "ping"
-  # end
-  # ```
-  property ping_callback : (Context -> Nil)?
+  property message_callback : (Message -> Nil)?
 
   # All messages will be sent through this callback.
   # ```
-  # client.on_all do |context, msg|
+  # client.on_all do |msg|
   #   puts msg
   # end
   # ```
-  property all_callback : (Context, String -> Nil)?
+  property all_callback : (String -> Nil)?
 
   # When room is joined this callback will be called
   # ```
-  # client.on_room_join do |context, room|
+  # client.on_room_join do |room|
   #   puts room.name
   # ```
-  property join_room_callback : (Context, Room -> Nil)?
+  property join_room_callback : (Room -> Nil)?
 
   # If newtokens are passed this callback will be called
   # ```
-  # client.on_new_tokens do |context, token, refresh_token|
+  # client.on_new_tokens do |token, refresh_token|
   #   puts token
   # ```
-  property new_tokens_callback : (Context, String, String -> Nil)?
+  property new_tokens_callback : (String, String -> Nil)?
 
   # If a user joins a room this callback will be called
   # ```
-  # client.on_user_joined_room do |context, user|
+  # client.on_user_joined_room do |user|
   #   puts user.display_name
   # ```
-  property user_joined_room_callback : (Context, User -> Nil)?
+  property user_joined_room_callback : (User -> Nil)?
 
   # Client takes your dogehouse token and refreshToken in order to auth
   def initialize(@token : String, @refresh_token : String)
@@ -93,83 +87,95 @@ class DogehouseCr::Client < BaseEntity
   # Add a message callback
   # on_message takes block with context parameter and String parameter
   # ```
-  # client.on_message do |context, msg|
+  # client.on_message do |msg|
   #   puts msg
   # end
   # ```
-  def on_message(&block : Context, Message -> Nil)
+  def on_message(&block : Message -> Nil)
     @message_callback = block
-  end
-
-  # Add a ping callback
-  # on_ping takes block with context parameter
-  # ```
-  # client.on_ping do |context|
-  #   puts "ping"
-  # end
-  # ```
-  def on_ping(&block : Context -> Nil)
-    @ping_callback = block
   end
 
   # Add all callback
   # All messages recieved in the client will be sent through this callback
   # ```
-  # client.on_all do |context, msg|
+  # client.on_all do |msg|
   #   puts msg
   # end
   # ```
-  def on_all(&block : Context, String -> Nil)
+  def on_all(&block : String -> Nil)
     @all_callback = block
   end
 
   # Add room join callback
   # ```
-  # client.on_room_join do |context, room|
+  # client.on_room_join do |room|
   #   puts room.name
   # ```
-  def on_room_join(&block : Context, Room -> Nil)
+  def on_room_join(&block : Room -> Nil)
     @room_join_callback = block
   end
 
   # Add ready callback
   # ```
-  # client.on_ready do |context, user|
+  # client.on_ready do |user|
   #   puts user.display_name
   # end
   # ```
-  def on_ready(&block : Context, User -> Nil)
+  def on_ready(&block : User -> Nil)
     @ready_callback = block
   end
 
   # Add new tokens callback
   # ```
-  # client.on_new_tokens do |context, token, refresh_token|
+  # client.on_new_tokens do |token, refresh_token|
   #   puts token
   # ```
-  def on_new_tokens(&block : Context, String, String -> Nil)
+  def on_new_tokens(&block : String, String -> Nil)
     @new_tokens_callback = block
   end
 
   # Add user joined room callback
   # ```
-  # client.on_user_joined_room do |context, user|
+  # client.on_user_joined_room do |user|
   #   puts user.display_name
   # ```
-  def on_user_joined_room(&block : Context, User -> Nil)
+  def on_user_joined_room(&block : User -> Nil)
     @user_joined_room_callback = block
+  end
+
+
+  # Sends message to whatever room currently in
+  # ```
+  # client.send_message "msg"
+  # ```
+  def send(message : String)
+    @message_queue << message
+  end
+
+  # Join room will join the room associated with a roomId
+  # ```
+  # client.join_room "roomid"
+  # ```
+  def join_room(roomId : String)
+    @ws.send(
+      {
+        "op" => "room:join",
+        "d"  => {
+          "roomId" => roomId,
+        },
+        "ref" => "[uuid]",
+        "v"   => "0.2.0",
+      }.to_json
+    )
   end
 
   def setup_run
     @ws.on_message do |msg|
       if !@all_callback.nil?
-        @all_callback.not_nil!.call Context.new(@ws), msg
+        @all_callback.not_nil!.call msg
       end
 
       if msg == "pong"
-        if !@ping_callback.nil?
-          @ping_callback.not_nil!.call Context.new(@ws)
-        end
         next
       end
 
@@ -181,7 +187,6 @@ class DogehouseCr::Client < BaseEntity
             .as_h
           if !@ready_callback.nil?
             @ready_callback.not_nil!.call(
-              Context.new(@ws),
               User.from_json(m)
             )
           end
@@ -192,7 +197,6 @@ class DogehouseCr::Client < BaseEntity
 
           if !@user_joined_room_callback.nil?
             @user_joined_room_callback.not_nil!.call(
-              Context.new(@ws),
               User.from_json(m)
             )
           end
@@ -202,7 +206,6 @@ class DogehouseCr::Client < BaseEntity
 
           if !@new_tokens_callback.nil?
             @new_tokens_callback.not_nil!.call(
-              Context.new(@ws),
               m["accessToken"].as_s,
               m["refreshToken"].as_s
             )
@@ -213,7 +216,6 @@ class DogehouseCr::Client < BaseEntity
               .as_h["msg"]
               .as_h
             @message_callback.not_nil!.call(
-              Context.new(@ws),
               Message.new(
                 m["userId"].as_s,
                 m["sentAt"].as_s,
@@ -231,7 +233,6 @@ class DogehouseCr::Client < BaseEntity
           payload = msg_json["p"].as_h
           if !@room_join_callback.nil?
             @room_join_callback.not_nil!.call(
-              Context.new(@ws),
               Room.new(
                 payload["id"].as_s,
                 payload["name"].as_s,
@@ -256,6 +257,24 @@ class DogehouseCr::Client < BaseEntity
   # This will start the message loop
   def run
     setup_run
+
+    spawn do
+      loop do
+        if @message_queue[0]?
+          @ws.send(
+            {
+              "op" => "chat:send_msg",
+              "d"  => {
+                "tokens" => encode_message @message_queue[0],
+              },
+              "v" => "0.2.0",
+            }.to_json
+          )
+          @message_queue = @message_queue[1..]
+        end
+        sleep 2
+      end
+    end
 
     @ws.run
   end

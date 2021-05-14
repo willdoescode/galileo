@@ -56,16 +56,6 @@
       
     </li>
   
-  <li class=" " data-id="dogehouse_cr/BaseEntity" data-name="baseentity">
-      <a href="../BaseEntity.html">BaseEntity</a>
-      
-    </li>
-  
-  <li class=" " data-id="dogehouse_cr/Context" data-name="context">
-      <a href="../Context.html">Context</a>
-      
-    </li>
-  
   <li class="parent open current" data-id="dogehouse_cr/DogehouseCr" data-name="dogehousecr">
       <a href="../DogehouseCr.html">DogehouseCr</a>
       
@@ -110,7 +100,7 @@
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../DogehouseCr/Client.html">DogehouseCr::Client</a></li><li class="superclass"><a href="../BaseEntity.html">BaseEntity</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../DogehouseCr/Client.html">DogehouseCr::Client</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
 
 
 
@@ -192,121 +182,107 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#all_callback:Context,String-%3ENil?-instance-method" class="signature"><strong>#all_callback</strong> : Context, String -> Nil?</a>
+        <a href="#all_callback:String-%3ENil?-instance-method" class="signature"><strong>#all_callback</strong> : String -> Nil?</a>
         
           <div class="summary"><p>All messages will be sent through this callback.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#all_callback=(all_callback:Context,String-%3ENil?)-instance-method" class="signature"><strong>#all_callback=</strong>(all_callback : Context, String -> Nil?)</a>
+        <a href="#all_callback=(all_callback:String-%3ENil?)-instance-method" class="signature"><strong>#all_callback=</strong>(all_callback : String -> Nil?)</a>
         
           <div class="summary"><p>All messages will be sent through this callback.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#join_room_callback:Context,Room-%3ENil?-instance-method" class="signature"><strong>#join_room_callback</strong> : Context, Room -> Nil?</a>
+        <a href="#join_room(roomId:String)-instance-method" class="signature"><strong>#join_room</strong>(roomId : String)</a>
         
-          <div class="summary"><p>When room is joined this callback will be called <code></code>` client.on_room_join do |context, room|   puts room.name <code></code>`</p></div>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#join_room_callback=(join_room_callback:Context,Room-%3ENil?)-instance-method" class="signature"><strong>#join_room_callback=</strong>(join_room_callback : Context, Room -> Nil?)</a>
-        
-          <div class="summary"><p>When room is joined this callback will be called <code></code>` client.on_room_join do |context, room|   puts room.name <code></code>`</p></div>
+          <div class="summary"><p>Join room will join the room associated with a roomId <code></code>` client.join_room "roomid" <code></code>`</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#message_callback:Context,Message-%3ENil?-instance-method" class="signature"><strong>#message_callback</strong> : Context, Message -> Nil?</a>
+        <a href="#join_room_callback:Room-%3ENil?-instance-method" class="signature"><strong>#join_room_callback</strong> : Room -> Nil?</a>
         
-          <div class="summary"><p>Optional message_callback property Add a message callback function with .on_message <code></code>` client.on_message do |context, msg|   puts msg end <code></code>`</p></div>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#message_callback=(message_callback:Context,Message-%3ENil?)-instance-method" class="signature"><strong>#message_callback=</strong>(message_callback : Context, Message -> Nil?)</a>
-        
-          <div class="summary"><p>Optional message_callback property Add a message callback function with .on_message <code></code>` client.on_message do |context, msg|   puts msg end <code></code>`</p></div>
+          <div class="summary"><p>When room is joined this callback will be called <code></code>` client.on_room_join do |room|   puts room.name <code></code>`</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#new_tokens_callback:Context,String,String-%3ENil?-instance-method" class="signature"><strong>#new_tokens_callback</strong> : Context, String, String -> Nil?</a>
+        <a href="#join_room_callback=(join_room_callback:Room-%3ENil?)-instance-method" class="signature"><strong>#join_room_callback=</strong>(join_room_callback : Room -> Nil?)</a>
         
-          <div class="summary"><p>If newtokens are passed this callback will be called <code></code>` client.on_new_tokens do |context, token, refresh_token|   puts token <code></code>`</p></div>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#new_tokens_callback=(new_tokens_callback:Context,String,String-%3ENil?)-instance-method" class="signature"><strong>#new_tokens_callback=</strong>(new_tokens_callback : Context, String, String -> Nil?)</a>
-        
-          <div class="summary"><p>If newtokens are passed this callback will be called <code></code>` client.on_new_tokens do |context, token, refresh_token|   puts token <code></code>`</p></div>
+          <div class="summary"><p>When room is joined this callback will be called <code></code>` client.on_room_join do |room|   puts room.name <code></code>`</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#on_all(&block:Context,String-%3ENil)-instance-method" class="signature"><strong>#on_all</strong>(&block : Context, String -> Nil)</a>
+        <a href="#message_callback:Message-%3ENil?-instance-method" class="signature"><strong>#message_callback</strong> : Message -> Nil?</a>
         
-          <div class="summary"><p>Add all callback All messages recieved in the client will be sent through this callback <code></code>` client.on_all do |context, msg|   puts msg end <code></code>`</p></div>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#on_message(&block:Context,Message-%3ENil)-instance-method" class="signature"><strong>#on_message</strong>(&block : Context, Message -> Nil)</a>
-        
-          <div class="summary"><p>Add a message callback on_message takes block with context parameter and String parameter <code></code>` client.on_message do |context, msg|   puts msg end <code></code>`</p></div>
+          <div class="summary"><p>Optional message_callback property Add a message callback function with .on_message <code></code>` client.on_message do |msg|   puts msg end <code></code>`</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#on_new_tokens(&block:Context,String,String-%3ENil)-instance-method" class="signature"><strong>#on_new_tokens</strong>(&block : Context, String, String -> Nil)</a>
+        <a href="#message_callback=(message_callback:Message-%3ENil?)-instance-method" class="signature"><strong>#message_callback=</strong>(message_callback : Message -> Nil?)</a>
         
-          <div class="summary"><p>Add new tokens callback <code></code>` client.on_new_tokens do |context, token, refresh_token|   puts token <code></code>`</p></div>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#on_ping(&block:Context-%3ENil)-instance-method" class="signature"><strong>#on_ping</strong>(&block : Context -> Nil)</a>
-        
-          <div class="summary"><p>Add a ping callback on_ping takes block with context parameter <code></code>` client.on_ping do |context|   puts "ping" end <code></code>`</p></div>
+          <div class="summary"><p>Optional message_callback property Add a message callback function with .on_message <code></code>` client.on_message do |msg|   puts msg end <code></code>`</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#on_ready(&block:Context,User-%3ENil)-instance-method" class="signature"><strong>#on_ready</strong>(&block : Context, User -> Nil)</a>
+        <a href="#new_tokens_callback:String,String-%3ENil?-instance-method" class="signature"><strong>#new_tokens_callback</strong> : String, String -> Nil?</a>
         
-          <div class="summary"><p>Add ready callback <code></code>` client.on_ready do |context, user|   puts user.display_name end <code></code>`</p></div>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#on_room_join(&block:Context,Room-%3ENil)-instance-method" class="signature"><strong>#on_room_join</strong>(&block : Context, Room -> Nil)</a>
-        
-          <div class="summary"><p>Add room join callback <code></code>` client.on_room_join do |context, room|   puts room.name <code></code>`</p></div>
+          <div class="summary"><p>If newtokens are passed this callback will be called <code></code>` client.on_new_tokens do |token, refresh_token|   puts token <code></code>`</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#on_user_joined_room(&block:Context,User-%3ENil)-instance-method" class="signature"><strong>#on_user_joined_room</strong>(&block : Context, User -> Nil)</a>
+        <a href="#new_tokens_callback=(new_tokens_callback:String,String-%3ENil?)-instance-method" class="signature"><strong>#new_tokens_callback=</strong>(new_tokens_callback : String, String -> Nil?)</a>
         
-          <div class="summary"><p>Add user joined room callback <code></code>` client.on_user_joined_room do |context, user|   puts user.display_name <code></code>`</p></div>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#ping_callback:Context-%3ENil?-instance-method" class="signature"><strong>#ping_callback</strong> : Context -> Nil?</a>
-        
-          <div class="summary"><p>Optional ping_callback property Add a message callback function with .on_ping <code></code>` client.on_ping do |context|   puts "ping" end <code></code>`</p></div>
+          <div class="summary"><p>If newtokens are passed this callback will be called <code></code>` client.on_new_tokens do |token, refresh_token|   puts token <code></code>`</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#ping_callback=(ping_callback:Context-%3ENil?)-instance-method" class="signature"><strong>#ping_callback=</strong>(ping_callback : Context -> Nil?)</a>
+        <a href="#on_all(&block:String-%3ENil)-instance-method" class="signature"><strong>#on_all</strong>(&block : String -> Nil)</a>
         
-          <div class="summary"><p>Optional ping_callback property Add a message callback function with .on_ping <code></code>` client.on_ping do |context|   puts "ping" end <code></code>`</p></div>
+          <div class="summary"><p>Add all callback All messages recieved in the client will be sent through this callback <code></code>` client.on_all do |msg|   puts msg end <code></code>`</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_message(&block:Message-%3ENil)-instance-method" class="signature"><strong>#on_message</strong>(&block : Message -> Nil)</a>
+        
+          <div class="summary"><p>Add a message callback on_message takes block with context parameter and String parameter <code></code>` client.on_message do |msg|   puts msg end <code></code>`</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_new_tokens(&block:String,String-%3ENil)-instance-method" class="signature"><strong>#on_new_tokens</strong>(&block : String, String -> Nil)</a>
+        
+          <div class="summary"><p>Add new tokens callback <code></code>` client.on_new_tokens do |token, refresh_token|   puts token <code></code>`</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_ready(&block:User-%3ENil)-instance-method" class="signature"><strong>#on_ready</strong>(&block : User -> Nil)</a>
+        
+          <div class="summary"><p>Add ready callback <code></code>` client.on_ready do |user|   puts user.display_name end <code></code>`</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_room_join(&block:Room-%3ENil)-instance-method" class="signature"><strong>#on_room_join</strong>(&block : Room -> Nil)</a>
+        
+          <div class="summary"><p>Add room join callback <code></code>` client.on_room_join do |room|   puts room.name <code></code>`</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_user_joined_room(&block:User-%3ENil)-instance-method" class="signature"><strong>#on_user_joined_room</strong>(&block : User -> Nil)</a>
+        
+          <div class="summary"><p>Add user joined room callback <code></code>` client.on_user_joined_room do |user|   puts user.display_name <code></code>`</p></div>
         
       </li>
     
@@ -318,16 +294,16 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#ready_callback:Context,User-%3ENil?-instance-method" class="signature"><strong>#ready_callback</strong> : Context, User -> Nil?</a>
+        <a href="#ready_callback:User-%3ENil?-instance-method" class="signature"><strong>#ready_callback</strong> : User -> Nil?</a>
         
-          <div class="summary"><p>Optional on ready callback property <code></code>` client.on_ready do |context, user|   puts user.display_name end <code></code>`</p></div>
+          <div class="summary"><p>Optional on ready callback property <code></code>` client.on_ready do |user|   puts user.display_name end <code></code>`</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#ready_callback=(ready_callback:Context,User-%3ENil?)-instance-method" class="signature"><strong>#ready_callback=</strong>(ready_callback : Context, User -> Nil?)</a>
+        <a href="#ready_callback=(ready_callback:User-%3ENil?)-instance-method" class="signature"><strong>#ready_callback=</strong>(ready_callback : User -> Nil?)</a>
         
-          <div class="summary"><p>Optional on ready callback property <code></code>` client.on_ready do |context, user|   puts user.display_name end <code></code>`</p></div>
+          <div class="summary"><p>Optional on ready callback property <code></code>` client.on_ready do |user|   puts user.display_name end <code></code>`</p></div>
         
       </li>
     
@@ -335,6 +311,13 @@
         <a href="#run-instance-method" class="signature"><strong>#run</strong></a>
         
           <div class="summary"><p>Run the client This will start the message loop</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#send(message:String)-instance-method" class="signature"><strong>#send</strong>(message : String)</a>
+        
+          <div class="summary"><p>Sends message to whatever room currently in <code></code>` client.send_message "msg" <code></code>`</p></div>
         
       </li>
     
@@ -351,16 +334,16 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#user_joined_room_callback:Context,User-%3ENil?-instance-method" class="signature"><strong>#user_joined_room_callback</strong> : Context, User -> Nil?</a>
+        <a href="#user_joined_room_callback:User-%3ENil?-instance-method" class="signature"><strong>#user_joined_room_callback</strong> : User -> Nil?</a>
         
-          <div class="summary"><p>If a user joins a room this callback will be called <code></code>` client.on_user_joined_room do |context, user|   puts user.display_name <code></code>`</p></div>
+          <div class="summary"><p>If a user joins a room this callback will be called <code></code>` client.on_user_joined_room do |user|   puts user.display_name <code></code>`</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#user_joined_room_callback=(user_joined_room_callback:Context,User-%3ENil?)-instance-method" class="signature"><strong>#user_joined_room_callback=</strong>(user_joined_room_callback : Context, User -> Nil?)</a>
+        <a href="#user_joined_room_callback=(user_joined_room_callback:User-%3ENil?)-instance-method" class="signature"><strong>#user_joined_room_callback=</strong>(user_joined_room_callback : User -> Nil?)</a>
         
-          <div class="summary"><p>If a user joins a room this callback will be called <code></code>` client.on_user_joined_room do |context, user|   puts user.display_name <code></code>`</p></div>
+          <div class="summary"><p>If a user joins a room this callback will be called <code></code>` client.on_user_joined_room do |user|   puts user.display_name <code></code>`</p></div>
         
       </li>
     
@@ -385,30 +368,6 @@
 
 
 <div class="methods-inherited">
-  
-    
-
-  <h3>Instance methods inherited from class <code><a href="../BaseEntity.html">BaseEntity</a></code></h3>
-  
-  
-    <a href="../BaseEntity.html#join_room(roomId:String)-instance-method" class="tooltip">
-      <span>join_room(roomId : String)</span>
-    join_room</a>, 
-    
-  
-    <a href="../BaseEntity.html#send_message(message:String)-instance-method" class="tooltip">
-      <span>send_message(message : String)</span>
-    send_message</a>
-    
-  
-
-
-    
-
-
-    
-
-
   
     
 
@@ -475,19 +434,19 @@
     Instance Method Detail
   </h2>
   
-    <div class="entry-detail" id="all_callback:Context,String->Nil?-instance-method">
+    <div class="entry-detail" id="all_callback:String->Nil?-instance-method">
       <div class="signature">
         
-        def <strong>all_callback</strong> : <a href="../Context.html">Context</a>, String -> Nil?
+        def <strong>all_callback</strong> : String -> Nil?
 
-        <a class="method-permalink" href="#all_callback:Context,String-%3ENil?-instance-method">#</a>
+        <a class="method-permalink" href="#all_callback:String-%3ENil?-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>All messages will be sent through this callback.</p>
 
-<pre><code class="language-crystal">client.on_all <span class="k">do</span> <span class="o">|</span>context, msg<span class="o">|</span>
+<pre><code class="language-crystal">client.on_all <span class="k">do</span> <span class="o">|</span>msg<span class="o">|</span>
   puts msg
 <span class="k">end</span></code></pre>
         </div>
@@ -498,19 +457,19 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="all_callback=(all_callback:Context,String->Nil?)-instance-method">
+    <div class="entry-detail" id="all_callback=(all_callback:String->Nil?)-instance-method">
       <div class="signature">
         
-        def <strong>all_callback=</strong>(all_callback : <a href="../Context.html">Context</a>, String -> Nil?)
+        def <strong>all_callback=</strong>(all_callback : String -> Nil?)
 
-        <a class="method-permalink" href="#all_callback=(all_callback:Context,String-%3ENil?)-instance-method">#</a>
+        <a class="method-permalink" href="#all_callback=(all_callback:String-%3ENil?)-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>All messages will be sent through this callback.</p>
 
-<pre><code class="language-crystal">client.on_all <span class="k">do</span> <span class="o">|</span>context, msg<span class="o">|</span>
+<pre><code class="language-crystal">client.on_all <span class="k">do</span> <span class="o">|</span>msg<span class="o">|</span>
   puts msg
 <span class="k">end</span></code></pre>
         </div>
@@ -521,19 +480,40 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="join_room_callback:Context,Room->Nil?-instance-method">
+    <div class="entry-detail" id="join_room(roomId:String)-instance-method">
       <div class="signature">
         
-        def <strong>join_room_callback</strong> : <a href="../Context.html">Context</a>, <a href="../DogehouseCr/Room.html">Room</a> -> Nil?
+        def <strong>join_room</strong>(roomId : String)
 
-        <a class="method-permalink" href="#join_room_callback:Context,Room-%3ENil?-instance-method">#</a>
+        <a class="method-permalink" href="#join_room(roomId:String)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Join room will join the room associated with a roomId</p>
+
+<pre><code class="language-crystal">client.join_room <span class="s">&quot;roomid&quot;</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="join_room_callback:Room->Nil?-instance-method">
+      <div class="signature">
+        
+        def <strong>join_room_callback</strong> : <a href="../DogehouseCr/Room.html">Room</a> -> Nil?
+
+        <a class="method-permalink" href="#join_room_callback:Room-%3ENil?-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>When room is joined this callback will be called</p>
 
-<pre><code class="language-crystal">client.on_room_join <span class="k">do</span> <span class="o">|</span>context, room<span class="o">|</span>
+<pre><code class="language-crystal">client.on_room_join <span class="k">do</span> <span class="o">|</span>room<span class="o">|</span>
   puts room.name</code></pre>
         </div>
       
@@ -543,19 +523,19 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="join_room_callback=(join_room_callback:Context,Room->Nil?)-instance-method">
+    <div class="entry-detail" id="join_room_callback=(join_room_callback:Room->Nil?)-instance-method">
       <div class="signature">
         
-        def <strong>join_room_callback=</strong>(join_room_callback : <a href="../Context.html">Context</a>, <a href="../DogehouseCr/Room.html">Room</a> -> Nil?)
+        def <strong>join_room_callback=</strong>(join_room_callback : <a href="../DogehouseCr/Room.html">Room</a> -> Nil?)
 
-        <a class="method-permalink" href="#join_room_callback=(join_room_callback:Context,Room-%3ENil?)-instance-method">#</a>
+        <a class="method-permalink" href="#join_room_callback=(join_room_callback:Room-%3ENil?)-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>When room is joined this callback will be called</p>
 
-<pre><code class="language-crystal">client.on_room_join <span class="k">do</span> <span class="o">|</span>context, room<span class="o">|</span>
+<pre><code class="language-crystal">client.on_room_join <span class="k">do</span> <span class="o">|</span>room<span class="o">|</span>
   puts room.name</code></pre>
         </div>
       
@@ -565,12 +545,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="message_callback:Context,Message->Nil?-instance-method">
+    <div class="entry-detail" id="message_callback:Message->Nil?-instance-method">
       <div class="signature">
         
-        def <strong>message_callback</strong> : <a href="../Context.html">Context</a>, <a href="../DogehouseCr/Message.html">Message</a> -> Nil?
+        def <strong>message_callback</strong> : <a href="../DogehouseCr/Message.html">Message</a> -> Nil?
 
-        <a class="method-permalink" href="#message_callback:Context,Message-%3ENil?-instance-method">#</a>
+        <a class="method-permalink" href="#message_callback:Message-%3ENil?-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -578,7 +558,7 @@
           <p>Optional message_callback property
 Add a message callback function with .on_message</p>
 
-<pre><code class="language-crystal">client.on_message <span class="k">do</span> <span class="o">|</span>context, msg<span class="o">|</span>
+<pre><code class="language-crystal">client.on_message <span class="k">do</span> <span class="o">|</span>msg<span class="o">|</span>
   puts msg
 <span class="k">end</span></code></pre>
         </div>
@@ -589,12 +569,12 @@ Add a message callback function with .on_message</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="message_callback=(message_callback:Context,Message->Nil?)-instance-method">
+    <div class="entry-detail" id="message_callback=(message_callback:Message->Nil?)-instance-method">
       <div class="signature">
         
-        def <strong>message_callback=</strong>(message_callback : <a href="../Context.html">Context</a>, <a href="../DogehouseCr/Message.html">Message</a> -> Nil?)
+        def <strong>message_callback=</strong>(message_callback : <a href="../DogehouseCr/Message.html">Message</a> -> Nil?)
 
-        <a class="method-permalink" href="#message_callback=(message_callback:Context,Message-%3ENil?)-instance-method">#</a>
+        <a class="method-permalink" href="#message_callback=(message_callback:Message-%3ENil?)-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -602,7 +582,7 @@ Add a message callback function with .on_message</p>
           <p>Optional message_callback property
 Add a message callback function with .on_message</p>
 
-<pre><code class="language-crystal">client.on_message <span class="k">do</span> <span class="o">|</span>context, msg<span class="o">|</span>
+<pre><code class="language-crystal">client.on_message <span class="k">do</span> <span class="o">|</span>msg<span class="o">|</span>
   puts msg
 <span class="k">end</span></code></pre>
         </div>
@@ -613,19 +593,19 @@ Add a message callback function with .on_message</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="new_tokens_callback:Context,String,String->Nil?-instance-method">
+    <div class="entry-detail" id="new_tokens_callback:String,String->Nil?-instance-method">
       <div class="signature">
         
-        def <strong>new_tokens_callback</strong> : <a href="../Context.html">Context</a>, String, String -> Nil?
+        def <strong>new_tokens_callback</strong> : String, String -> Nil?
 
-        <a class="method-permalink" href="#new_tokens_callback:Context,String,String-%3ENil?-instance-method">#</a>
+        <a class="method-permalink" href="#new_tokens_callback:String,String-%3ENil?-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>If newtokens are passed this callback will be called</p>
 
-<pre><code class="language-crystal">client.on_new_tokens <span class="k">do</span> <span class="o">|</span>context, token, refresh_token<span class="o">|</span>
+<pre><code class="language-crystal">client.on_new_tokens <span class="k">do</span> <span class="o">|</span>token, refresh_token<span class="o">|</span>
   puts token</code></pre>
         </div>
       
@@ -635,19 +615,19 @@ Add a message callback function with .on_message</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="new_tokens_callback=(new_tokens_callback:Context,String,String->Nil?)-instance-method">
+    <div class="entry-detail" id="new_tokens_callback=(new_tokens_callback:String,String->Nil?)-instance-method">
       <div class="signature">
         
-        def <strong>new_tokens_callback=</strong>(new_tokens_callback : <a href="../Context.html">Context</a>, String, String -> Nil?)
+        def <strong>new_tokens_callback=</strong>(new_tokens_callback : String, String -> Nil?)
 
-        <a class="method-permalink" href="#new_tokens_callback=(new_tokens_callback:Context,String,String-%3ENil?)-instance-method">#</a>
+        <a class="method-permalink" href="#new_tokens_callback=(new_tokens_callback:String,String-%3ENil?)-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>If newtokens are passed this callback will be called</p>
 
-<pre><code class="language-crystal">client.on_new_tokens <span class="k">do</span> <span class="o">|</span>context, token, refresh_token<span class="o">|</span>
+<pre><code class="language-crystal">client.on_new_tokens <span class="k">do</span> <span class="o">|</span>token, refresh_token<span class="o">|</span>
   puts token</code></pre>
         </div>
       
@@ -657,12 +637,12 @@ Add a message callback function with .on_message</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="on_all(&block:Context,String->Nil)-instance-method">
+    <div class="entry-detail" id="on_all(&block:String->Nil)-instance-method">
       <div class="signature">
         
-        def <strong>on_all</strong>(&block : <a href="../Context.html">Context</a>, String -> Nil)
+        def <strong>on_all</strong>(&block : String -> Nil)
 
-        <a class="method-permalink" href="#on_all(&block:Context,String-%3ENil)-instance-method">#</a>
+        <a class="method-permalink" href="#on_all(&block:String-%3ENil)-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -670,7 +650,7 @@ Add a message callback function with .on_message</p>
           <p>Add all callback
 All messages recieved in the client will be sent through this callback</p>
 
-<pre><code class="language-crystal">client.on_all <span class="k">do</span> <span class="o">|</span>context, msg<span class="o">|</span>
+<pre><code class="language-crystal">client.on_all <span class="k">do</span> <span class="o">|</span>msg<span class="o">|</span>
   puts msg
 <span class="k">end</span></code></pre>
         </div>
@@ -681,12 +661,12 @@ All messages recieved in the client will be sent through this callback</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="on_message(&block:Context,Message->Nil)-instance-method">
+    <div class="entry-detail" id="on_message(&block:Message->Nil)-instance-method">
       <div class="signature">
         
-        def <strong>on_message</strong>(&block : <a href="../Context.html">Context</a>, <a href="../DogehouseCr/Message.html">Message</a> -> Nil)
+        def <strong>on_message</strong>(&block : <a href="../DogehouseCr/Message.html">Message</a> -> Nil)
 
-        <a class="method-permalink" href="#on_message(&block:Context,Message-%3ENil)-instance-method">#</a>
+        <a class="method-permalink" href="#on_message(&block:Message-%3ENil)-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -694,7 +674,7 @@ All messages recieved in the client will be sent through this callback</p>
           <p>Add a message callback
 on_message takes block with context parameter and String parameter</p>
 
-<pre><code class="language-crystal">client.on_message <span class="k">do</span> <span class="o">|</span>context, msg<span class="o">|</span>
+<pre><code class="language-crystal">client.on_message <span class="k">do</span> <span class="o">|</span>msg<span class="o">|</span>
   puts msg
 <span class="k">end</span></code></pre>
         </div>
@@ -705,19 +685,19 @@ on_message takes block with context parameter and String parameter</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="on_new_tokens(&block:Context,String,String->Nil)-instance-method">
+    <div class="entry-detail" id="on_new_tokens(&block:String,String->Nil)-instance-method">
       <div class="signature">
         
-        def <strong>on_new_tokens</strong>(&block : <a href="../Context.html">Context</a>, String, String -> Nil)
+        def <strong>on_new_tokens</strong>(&block : String, String -> Nil)
 
-        <a class="method-permalink" href="#on_new_tokens(&block:Context,String,String-%3ENil)-instance-method">#</a>
+        <a class="method-permalink" href="#on_new_tokens(&block:String,String-%3ENil)-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Add new tokens callback</p>
 
-<pre><code class="language-crystal">client.on_new_tokens <span class="k">do</span> <span class="o">|</span>context, token, refresh_token<span class="o">|</span>
+<pre><code class="language-crystal">client.on_new_tokens <span class="k">do</span> <span class="o">|</span>token, refresh_token<span class="o">|</span>
   puts token</code></pre>
         </div>
       
@@ -727,43 +707,19 @@ on_message takes block with context parameter and String parameter</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="on_ping(&block:Context->Nil)-instance-method">
+    <div class="entry-detail" id="on_ready(&block:User->Nil)-instance-method">
       <div class="signature">
         
-        def <strong>on_ping</strong>(&block : <a href="../Context.html">Context</a> -> Nil)
+        def <strong>on_ready</strong>(&block : <a href="../DogehouseCr/User.html">User</a> -> Nil)
 
-        <a class="method-permalink" href="#on_ping(&block:Context-%3ENil)-instance-method">#</a>
-      </div>
-      
-        <div class="doc">
-          
-          <p>Add a ping callback
-on_ping takes block with context parameter</p>
-
-<pre><code class="language-crystal">client.on_ping <span class="k">do</span> <span class="o">|</span>context<span class="o">|</span>
-  puts <span class="s">&quot;ping&quot;</span>
-<span class="k">end</span></code></pre>
-        </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="on_ready(&block:Context,User->Nil)-instance-method">
-      <div class="signature">
-        
-        def <strong>on_ready</strong>(&block : <a href="../Context.html">Context</a>, <a href="../DogehouseCr/User.html">User</a> -> Nil)
-
-        <a class="method-permalink" href="#on_ready(&block:Context,User-%3ENil)-instance-method">#</a>
+        <a class="method-permalink" href="#on_ready(&block:User-%3ENil)-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Add ready callback</p>
 
-<pre><code class="language-crystal">client.on_ready <span class="k">do</span> <span class="o">|</span>context, user<span class="o">|</span>
+<pre><code class="language-crystal">client.on_ready <span class="k">do</span> <span class="o">|</span>user<span class="o">|</span>
   puts user.display_name
 <span class="k">end</span></code></pre>
         </div>
@@ -774,19 +730,19 @@ on_ping takes block with context parameter</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="on_room_join(&block:Context,Room->Nil)-instance-method">
+    <div class="entry-detail" id="on_room_join(&block:Room->Nil)-instance-method">
       <div class="signature">
         
-        def <strong>on_room_join</strong>(&block : <a href="../Context.html">Context</a>, <a href="../DogehouseCr/Room.html">Room</a> -> Nil)
+        def <strong>on_room_join</strong>(&block : <a href="../DogehouseCr/Room.html">Room</a> -> Nil)
 
-        <a class="method-permalink" href="#on_room_join(&block:Context,Room-%3ENil)-instance-method">#</a>
+        <a class="method-permalink" href="#on_room_join(&block:Room-%3ENil)-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Add room join callback</p>
 
-<pre><code class="language-crystal">client.on_room_join <span class="k">do</span> <span class="o">|</span>context, room<span class="o">|</span>
+<pre><code class="language-crystal">client.on_room_join <span class="k">do</span> <span class="o">|</span>room<span class="o">|</span>
   puts room.name</code></pre>
         </div>
       
@@ -796,68 +752,20 @@ on_ping takes block with context parameter</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="on_user_joined_room(&block:Context,User->Nil)-instance-method">
+    <div class="entry-detail" id="on_user_joined_room(&block:User->Nil)-instance-method">
       <div class="signature">
         
-        def <strong>on_user_joined_room</strong>(&block : <a href="../Context.html">Context</a>, <a href="../DogehouseCr/User.html">User</a> -> Nil)
+        def <strong>on_user_joined_room</strong>(&block : <a href="../DogehouseCr/User.html">User</a> -> Nil)
 
-        <a class="method-permalink" href="#on_user_joined_room(&block:Context,User-%3ENil)-instance-method">#</a>
+        <a class="method-permalink" href="#on_user_joined_room(&block:User-%3ENil)-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Add user joined room callback</p>
 
-<pre><code class="language-crystal">client.on_user_joined_room <span class="k">do</span> <span class="o">|</span>context, user<span class="o">|</span>
+<pre><code class="language-crystal">client.on_user_joined_room <span class="k">do</span> <span class="o">|</span>user<span class="o">|</span>
   puts user.display_name</code></pre>
-        </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="ping_callback:Context->Nil?-instance-method">
-      <div class="signature">
-        
-        def <strong>ping_callback</strong> : <a href="../Context.html">Context</a> -> Nil?
-
-        <a class="method-permalink" href="#ping_callback:Context-%3ENil?-instance-method">#</a>
-      </div>
-      
-        <div class="doc">
-          
-          <p>Optional ping_callback property
-Add a message callback function with .on_ping</p>
-
-<pre><code class="language-crystal">client.on_ping <span class="k">do</span> <span class="o">|</span>context<span class="o">|</span>
-  puts <span class="s">&quot;ping&quot;</span>
-<span class="k">end</span></code></pre>
-        </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="ping_callback=(ping_callback:Context->Nil?)-instance-method">
-      <div class="signature">
-        
-        def <strong>ping_callback=</strong>(ping_callback : <a href="../Context.html">Context</a> -> Nil?)
-
-        <a class="method-permalink" href="#ping_callback=(ping_callback:Context-%3ENil?)-instance-method">#</a>
-      </div>
-      
-        <div class="doc">
-          
-          <p>Optional ping_callback property
-Add a message callback function with .on_ping</p>
-
-<pre><code class="language-crystal">client.on_ping <span class="k">do</span> <span class="o">|</span>context<span class="o">|</span>
-  puts <span class="s">&quot;ping&quot;</span>
-<span class="k">end</span></code></pre>
         </div>
       
       <br/>
@@ -885,19 +793,19 @@ Add a message callback function with .on_ping</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="ready_callback:Context,User->Nil?-instance-method">
+    <div class="entry-detail" id="ready_callback:User->Nil?-instance-method">
       <div class="signature">
         
-        def <strong>ready_callback</strong> : <a href="../Context.html">Context</a>, <a href="../DogehouseCr/User.html">User</a> -> Nil?
+        def <strong>ready_callback</strong> : <a href="../DogehouseCr/User.html">User</a> -> Nil?
 
-        <a class="method-permalink" href="#ready_callback:Context,User-%3ENil?-instance-method">#</a>
+        <a class="method-permalink" href="#ready_callback:User-%3ENil?-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Optional on ready callback property</p>
 
-<pre><code class="language-crystal">client.on_ready <span class="k">do</span> <span class="o">|</span>context, user<span class="o">|</span>
+<pre><code class="language-crystal">client.on_ready <span class="k">do</span> <span class="o">|</span>user<span class="o">|</span>
   puts user.display_name
 <span class="k">end</span></code></pre>
         </div>
@@ -908,19 +816,19 @@ Add a message callback function with .on_ping</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="ready_callback=(ready_callback:Context,User->Nil?)-instance-method">
+    <div class="entry-detail" id="ready_callback=(ready_callback:User->Nil?)-instance-method">
       <div class="signature">
         
-        def <strong>ready_callback=</strong>(ready_callback : <a href="../Context.html">Context</a>, <a href="../DogehouseCr/User.html">User</a> -> Nil?)
+        def <strong>ready_callback=</strong>(ready_callback : <a href="../DogehouseCr/User.html">User</a> -> Nil?)
 
-        <a class="method-permalink" href="#ready_callback=(ready_callback:Context,User-%3ENil?)-instance-method">#</a>
+        <a class="method-permalink" href="#ready_callback=(ready_callback:User-%3ENil?)-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Optional on ready callback property</p>
 
-<pre><code class="language-crystal">client.on_ready <span class="k">do</span> <span class="o">|</span>context, user<span class="o">|</span>
+<pre><code class="language-crystal">client.on_ready <span class="k">do</span> <span class="o">|</span>user<span class="o">|</span>
   puts user.display_name
 <span class="k">end</span></code></pre>
         </div>
@@ -943,6 +851,27 @@ Add a message callback function with .on_ping</p>
           
           <p>Run the client
 This will start the message loop</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="send(message:String)-instance-method">
+      <div class="signature">
+        
+        def <strong>send</strong>(message : String)
+
+        <a class="method-permalink" href="#send(message:String)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Sends message to whatever room currently in</p>
+
+<pre><code class="language-crystal">client.send_message <span class="s">&quot;msg&quot;</span></code></pre>
         </div>
       
       <br/>
@@ -984,19 +913,19 @@ This will start the message loop</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="user_joined_room_callback:Context,User->Nil?-instance-method">
+    <div class="entry-detail" id="user_joined_room_callback:User->Nil?-instance-method">
       <div class="signature">
         
-        def <strong>user_joined_room_callback</strong> : <a href="../Context.html">Context</a>, <a href="../DogehouseCr/User.html">User</a> -> Nil?
+        def <strong>user_joined_room_callback</strong> : <a href="../DogehouseCr/User.html">User</a> -> Nil?
 
-        <a class="method-permalink" href="#user_joined_room_callback:Context,User-%3ENil?-instance-method">#</a>
+        <a class="method-permalink" href="#user_joined_room_callback:User-%3ENil?-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>If a user joins a room this callback will be called</p>
 
-<pre><code class="language-crystal">client.on_user_joined_room <span class="k">do</span> <span class="o">|</span>context, user<span class="o">|</span>
+<pre><code class="language-crystal">client.on_user_joined_room <span class="k">do</span> <span class="o">|</span>user<span class="o">|</span>
   puts user.display_name</code></pre>
         </div>
       
@@ -1006,19 +935,19 @@ This will start the message loop</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="user_joined_room_callback=(user_joined_room_callback:Context,User->Nil?)-instance-method">
+    <div class="entry-detail" id="user_joined_room_callback=(user_joined_room_callback:User->Nil?)-instance-method">
       <div class="signature">
         
-        def <strong>user_joined_room_callback=</strong>(user_joined_room_callback : <a href="../Context.html">Context</a>, <a href="../DogehouseCr/User.html">User</a> -> Nil?)
+        def <strong>user_joined_room_callback=</strong>(user_joined_room_callback : <a href="../DogehouseCr/User.html">User</a> -> Nil?)
 
-        <a class="method-permalink" href="#user_joined_room_callback=(user_joined_room_callback:Context,User-%3ENil?)-instance-method">#</a>
+        <a class="method-permalink" href="#user_joined_room_callback=(user_joined_room_callback:User-%3ENil?)-instance-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>If a user joins a room this callback will be called</p>
 
-<pre><code class="language-crystal">client.on_user_joined_room <span class="k">do</span> <span class="o">|</span>context, user<span class="o">|</span>
+<pre><code class="language-crystal">client.on_user_joined_room <span class="k">do</span> <span class="o">|</span>user<span class="o">|</span>
   puts user.display_name</code></pre>
         </div>
       
