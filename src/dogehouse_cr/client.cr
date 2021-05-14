@@ -10,7 +10,7 @@ PING_TIMEOUT = 8
 # Base dogehouse cilent to interface with api with
 class DogehouseCr::Client
   @message_queue = Array(String).new
-
+  @delay = 1
 
   # Websocket connection state
   property ws : HTTP::WebSocket
@@ -143,7 +143,6 @@ class DogehouseCr::Client
     @user_joined_room_callback = block
   end
 
-
   # Sends message to whatever room currently in
   # ```
   # client.send_message "msg"
@@ -159,12 +158,11 @@ class DogehouseCr::Client
   def join_room(roomId : String)
     @ws.send(
       {
-        "op" => "room:join",
+        "op" => "join_room_and_get_info",
         "d"  => {
           "roomId" => roomId,
         },
-        "ref" => "[uuid]",
-        "v"   => "0.2.0",
+        "fetchId" => "[uuid]",
       }.to_json
     )
   end
@@ -229,8 +227,11 @@ class DogehouseCr::Client
               )
             )
           end
-        elsif msg_json["op"] == "room:join:reply"
-          payload = msg_json["p"].as_h
+        elsif msg_json["op"] == "fetch_done"
+          puts msg_json
+          payload = msg_json["d"]
+            .as_h["room"]
+            .as_h
           if !@room_join_callback.nil?
             @room_join_callback.not_nil!.call(
               Room.new(
@@ -241,6 +242,7 @@ class DogehouseCr::Client
               )
             )
           end
+          @delay = payload["chatThrottle"].as_i
         end
       end
     end
@@ -251,12 +253,6 @@ class DogehouseCr::Client
         sleep PING_TIMEOUT
       end
     end
-  end
-
-  # Run the client
-  # This will start the message loop
-  def run
-    setup_run
 
     spawn do
       loop do
@@ -272,9 +268,15 @@ class DogehouseCr::Client
           )
           @message_queue = @message_queue[1..]
         end
-        sleep 2
+        sleep @delay
       end
     end
+  end
+
+  # Run the client
+  # This will start the message loop
+  def run
+    setup_run
 
     @ws.run
   end

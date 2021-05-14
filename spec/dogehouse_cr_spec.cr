@@ -32,9 +32,9 @@ describe DogehouseCr do
       p! "Joined room: #{room}"
     end
 
-    # client.on_all do |context, msg|
-    #   puts msg
-    # end
+    client.on_all do |msg|
+      puts msg
+    end
 
     # spawn do
     #   loop do
