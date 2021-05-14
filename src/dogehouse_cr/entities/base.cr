@@ -1,7 +1,7 @@
 require "http/web_socket"
 require "json"
 
-class DogeEntity
+class BaseEntity
   # Sends message to whatever room currently in
   # ```
   # client.send_message "msg"
@@ -33,22 +33,5 @@ class DogeEntity
         "v"   => "0.2.0",
       }.to_json
     )
-  end
-end
-
-class Context < DogeEntity
-  property ws : HTTP::WebSocket
-
-  def initialize(@ws : HTTP::WebSocket)
-  end
-end
-
-class Room
-  getter id : String
-  getter name : String
-  getter description : String
-  getter is_private : Bool
-
-  def initialize(@id : String, @name : String, @description : String, @is_private : Bool)
   end
 end

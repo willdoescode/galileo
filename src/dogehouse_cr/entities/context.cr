@@ -1,7 +1,7 @@
 require "http/web_socket"
-require "json"
+require "./base.cr"
 
-class DogehouseCr::User
+class Context < BaseEntity
   property ws : HTTP::WebSocket
 
   def initialize(@ws : HTTP::WebSocket)

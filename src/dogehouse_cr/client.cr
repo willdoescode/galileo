@@ -1,17 +1,18 @@
 require "http/web_socket"
 require "spec"
 require "json"
-require "./user.cr"
-require "./utils/tokenizer.cr"
-require "./entity.cr"
+require "./utils/*"
+require "./entities/*"
 
 API_URL      = "wss://api.dogehouse.tv/socket"
 PING_TIMEOUT = 8
 
 # Base dogehouse cilent to interface with api with
-class DogehouseCr::Client < DogeEntity
+class DogehouseCr::Client < BaseEntity
   # Websocket connection state
   property ws : HTTP::WebSocket
+
+  property ready_callback : (Context, User -> Nil)?
 
   # Optional message_callback property
   # Add a message callback function with .on_message
@@ -20,7 +21,7 @@ class DogehouseCr::Client < DogeEntity
   #   puts msg
   # end
   # ```
-  property message_callback : (Context, String -> Nil)?
+  property message_callback : (Context, Message -> Nil)?
 
   # Optional ping_callback property
   # Add a message callback function with .on_ping
@@ -76,7 +77,7 @@ class DogehouseCr::Client < DogeEntity
   #   puts msg
   # end
   # ```
-  def on_message(&block : Context, String -> Nil)
+  def on_message(&block : Context, Message -> Nil)
     @message_callback = block
   end
 
@@ -111,6 +112,10 @@ class DogehouseCr::Client < DogeEntity
     @room_join_callback = block
   end
 
+  def on_ready(&block : Context, User -> Nil)
+    @ready_callback = block
+  end
+
   def setup_run
     @ws.on_message do |msg|
       if !@all_callback.nil?
@@ -126,15 +131,50 @@ class DogehouseCr::Client < DogeEntity
 
       msg_json = Hash(String, JSON::Any).from_json msg
       if msg_json["op"]?
-        if msg_json["op"] == "new_chat_msg"
+        if msg_json["op"] == "auth-good"
+          m = msg_json["d"]
+            .as_h["user"]
+            .as_h
+          if !@ready_callback.nil?
+            @ready_callback.not_nil!.call(
+              Context.new(@ws),
+              User.new(
+                m["id"].as_s,
+                m["username"].as_s,
+                m["avatarUrl"].as_s,
+                m["bannerUrl"].as_s? ? m["bannerUrl"].as_s : "",
+                m["bio"].as_s,
+                m["online"].as_bool,
+                m["staff"].as_bool,
+                m["lastOnline"].as_s,
+                m["currentRoomId"].as_s? ? m["currentRoomId"].as_s : "",
+                m["displayName"].as_s,
+                m["numFollowing"].as_i,
+                m["numFollowers"].as_i,
+                m["contributions"].as_i,
+                m["youAreFollowing"].as_bool? ? true : false,
+                m["followsYou"].as_bool? ? true : false,
+                m["botOwnerId"].as_s
+              )
+            )
+          end
+        elsif msg_json["op"] == "new_chat_msg"
           if !@message_callback.nil?
+            m = msg_json["d"]
+              .as_h["msg"]
+              .as_h
             @message_callback.not_nil!.call(
               Context.new(@ws),
-              decode_message(
-                msg_json["d"]
-                  .as_h["msg"]
-                  .as_h["tokens"]
-                  .as_a.map { |a| a.as_h }
+              Message.new(
+                m["userId"].as_s,
+                m["sentAt"].as_s,
+                m["isWhisper"].as_bool,
+                decode_message(
+                  msg_json["d"]
+                    .as_h["msg"]
+                    .as_h["tokens"]
+                    .as_a.map { |a| a.as_h }
+                )
               )
             )
           end
