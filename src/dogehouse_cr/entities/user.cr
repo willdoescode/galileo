@@ -38,4 +38,25 @@ class DogehouseCr::User
     @bot_owner_id : String
   )
   end
+
+  def self.from_json(m : Hash(String, JSON::Any)) : User
+    User.new(
+      m["id"].as_s,
+      m["username"].as_s,
+      m["avatarUrl"].as_s,
+      m["bannerUrl"].as_s? ? m["bannerUrl"].as_s : "",
+      m["bio"].as_s,
+      m["online"].as_bool,
+      m["staff"].as_bool,
+      m["lastOnline"].as_s,
+      m["currentRoomId"].as_s? ? m["currentRoomId"].as_s : "",
+      m["displayName"].as_s,
+      m["numFollowing"].as_i,
+      m["numFollowers"].as_i,
+      m["contributions"].as_i,
+      m["youAreFollowing"].as_bool? ? true : false,
+      m["followsYou"].as_bool? ? true : false,
+      m["botOwnerId"].as_s? ? m["botOwnerId"].as_s : ""
+    )
+  end
 end

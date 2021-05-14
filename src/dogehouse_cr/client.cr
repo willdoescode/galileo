@@ -53,7 +53,19 @@ class DogehouseCr::Client < BaseEntity
   # ```
   property join_room_callback : (Context, Room -> Nil)?
 
+  # If newtokens are passed this callback will be called
+  # ```
+  # client.on_new_tokens do |context, token, refresh_token|
+  #   puts token
+  # ```
   property new_tokens_callback : (Context, String, String -> Nil)?
+
+  # If a user joins a room this callback will be called
+  # ```
+  # client.on_user_joined_room do |context, user|
+  #   puts user.display_name
+  # ```
+  property user_joined_room_callback : (Context, User -> Nil)?
 
   # Client takes your dogehouse token and refreshToken in order to auth
   def initialize(@token : String, @refresh_token : String)
@@ -130,8 +142,22 @@ class DogehouseCr::Client < BaseEntity
     @ready_callback = block
   end
 
+  # Add new tokens callback
+  # ```
+  # client.on_new_tokens do |context, token, refresh_token|
+  #   puts token
+  # ```
   def on_new_tokens(&block : Context, String, String -> Nil)
     @new_tokens_callback = block
+  end
+
+  # Add user joined room callback
+  # ```
+  # client.on_user_joined_room do |context, user|
+  #   puts user.display_name
+  # ```
+  def on_user_joined_room(&block : Context, User -> Nil)
+    @user_joined_room_callback = block
   end
 
   def setup_run
@@ -156,24 +182,18 @@ class DogehouseCr::Client < BaseEntity
           if !@ready_callback.nil?
             @ready_callback.not_nil!.call(
               Context.new(@ws),
-              User.new(
-                m["id"].as_s,
-                m["username"].as_s,
-                m["avatarUrl"].as_s,
-                m["bannerUrl"].as_s? ? m["bannerUrl"].as_s : "",
-                m["bio"].as_s,
-                m["online"].as_bool,
-                m["staff"].as_bool,
-                m["lastOnline"].as_s,
-                m["currentRoomId"].as_s? ? m["currentRoomId"].as_s : "",
-                m["displayName"].as_s,
-                m["numFollowing"].as_i,
-                m["numFollowers"].as_i,
-                m["contributions"].as_i,
-                m["youAreFollowing"].as_bool? ? true : false,
-                m["followsYou"].as_bool? ? true : false,
-                m["botOwnerId"].as_s
-              )
+              User.from_json(m)
+            )
+          end
+        elsif msg_json["op"] == "new_user_join_room"
+          m = msg_json["d"]
+            .as_h["user"]
+            .as_h
+
+          if !@user_joined_room_callback.nil?
+            @user_joined_room_callback.not_nil!.call(
+              Context.new(@ws),
+              User.from_json(m)
             )
           end
         elsif msg_json["op"] == "new-tokens"

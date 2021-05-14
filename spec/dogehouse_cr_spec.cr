@@ -13,7 +13,15 @@ describe DogehouseCr do
       if msg.content.starts_with? "/echo "
         context.send_message msg.content[5..]
       end
-      puts "MSG: #{msg}"
+      p! "MSG: #{msg}"
+    end
+
+    client.on_new_tokens do |context, token, refresh_token|
+      puts "Received new tokens"
+    end
+
+    client.on_user_joined_room do |context, user|
+      context.send_message "#{user.display_name} joined the room"
     end
 
     # client.on_ping do |context|
@@ -21,7 +29,7 @@ describe DogehouseCr do
     # end
 
     client.on_room_join do |context, room|
-      puts "Joined room: #{room.name}"
+      p! "Joined room: #{room}"
     end
 
     client.on_all do |context, msg|
