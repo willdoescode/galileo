@@ -1,11 +1,11 @@
 # dogehouse_cr
 
-A dogehouse wrapper for crystal
+## The fastest way to make the fastest dogehouse bots.
 
-## [Docs](http://docs.will.tools/docs/)
-## See [examples/](examples/) for example programs
+### [Docs](http://docs.will.tools/docs/)
+### [Examples](examples/)
 
-## Installation
+#### Installation
 
 1. Add the dependency to your `shard.yml`:
 
@@ -17,26 +17,8 @@ A dogehouse wrapper for crystal
 
 2. Run `shards install`
 
-## Usage
+#### Usage
 
 ```crystal
 require "dogehouse_cr"
 ```
-
-TODO: Write usage instructions here
-
-## Development
-
-TODO: Write development instructions here
-
-## Contributing
-
-1. Fork it (<https://github.com/willdoescode/dogehouse_cr/fork>)
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
-
-## Contributors
-
-- [Will Lane](https://github.com/willdoescode) - creator and maintainer
