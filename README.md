@@ -8,22 +8,6 @@
   <a href="https://github.com/willdoescode/dogehouse_cr/tree/main/examples">Examples</a>
   <span> · </span>
   <a href="https://docs.will.tools/docs">Documentation</a>
+  <span> · </span>
+  <a href="https://github.com/willdoescode/dogehouse_cr/tree/main/GUIDE>md">Guide</a>
 </h3>
-
-#### Installation
-
-1. Add the dependency to your `shard.yml`:
-
-   ```yaml
-   dependencies:
-     dogehouse_cr:
-       github: willdoescode/dogehouse_cr
-   ```
-
-2. Run `shards install`
-
-#### Usage
-
-```crystal
-require "dogehouse_cr"
-```
