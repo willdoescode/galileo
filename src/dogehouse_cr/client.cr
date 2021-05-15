@@ -9,10 +9,15 @@ PING_TIMEOUT = 8
 
 # Base dogehouse cilent to interface with api with
 class DogehouseCr::Client
+  # Message queue to send withing message delays
   @message_queue = Array(String).new
 
   # The chat delay withing rooms
   @delay = 1000000
+
+  property muted : Bool = true
+
+  @in_room = false
 
   # Websocket connection state
   property ws : HTTP::WebSocket
@@ -63,10 +68,7 @@ class DogehouseCr::Client
   # ```
   property user_joined_room_callback : (User -> Nil)?
 
-  # Client takes your dogehouse token and refreshToken in order to auth
-  def initialize(@token : String, @refresh_token : String)
-    @ws = HTTP::WebSocket.new(URI.parse(API_URL))
-
+  def auth
     @ws.send(
       {
         "op" => "auth",
@@ -79,6 +81,13 @@ class DogehouseCr::Client
         "platform"         => "dogehouse_cr",
       }.to_json
     )
+  end
+
+  # Client takes your dogehouse token and refreshToken in order to auth
+  def initialize(@token : String, @refresh_token : String)
+    @ws = HTTP::WebSocket.new(URI.parse(API_URL))
+
+    auth
   end
 
   # Send raw messages api without wrapper
@@ -153,6 +162,35 @@ class DogehouseCr::Client
     @message_queue << message
   end
 
+  def ping_loop
+    spawn do
+      loop do
+        @ws.send "ping"
+        sleep PING_TIMEOUT
+      end
+    end
+  end
+
+  def message_loop
+    spawn do
+      loop do
+        if @message_queue[0]?
+          @ws.send(
+            {
+              "op" => "chat:send_msg",
+              "d"  => {
+                "tokens" => encode_message @message_queue[0],
+              },
+              "v" => "0.2.0",
+            }.to_json
+          )
+          @message_queue = @message_queue[1..]
+        end
+        sleep Time::Span.new nanoseconds: @delay
+      end
+    end
+  end
+
   # Join room will join the room associated with a roomId
   # ```
   # client.join_room "roomid"
@@ -167,6 +205,64 @@ class DogehouseCr::Client
         "fetchId" => "[uuid]",
       }.to_json
     )
+    @joined_room = true
+  end
+
+  # Ask to speak will request to speak in whatever room the bot is in
+  def ask_to_speak
+    json = JSON.build do |j|
+      j.object do
+        j.field "op", ASK_TO_SPEAK
+        j.field "d" do
+          j.object do
+          end
+        end
+      end
+    end
+
+    @ws.send(json)
+  end
+
+  # Will toggle mute on and off
+  def toggle_mute
+    @ws.send(
+      {
+        "op" => MUTE,
+        "d"  => {
+          "value" => !@muted,
+        },
+      }.to_json
+    )
+
+    @muted = !@muted
+  end
+
+  # Will mute
+  def mute
+    @ws.send(
+      {
+        "op" => MUTE,
+        "d"  => {
+          "value" => true,
+        },
+      }.to_json
+    )
+
+    @muted = true
+  end
+
+  # Will unmute
+  def unmute
+    @ws.send(
+      {
+        "op" => MUTE,
+        "d"  => {
+          "value" => false,
+        },
+      }.to_json
+    )
+
+    @muted = false
   end
 
   def setup_run
@@ -196,9 +292,7 @@ class DogehouseCr::Client
             .as_h
 
           if !@user_joined_room_callback.nil?
-            @user_joined_room_callback.not_nil!.call(
-              User.from_json(m)
-            )
+            @user_joined_room_callback.not_nil!.call User.from_json m
           end
         elsif msg_json["op"] == "new-tokens"
           m = msg_json["d"]
@@ -229,7 +323,7 @@ class DogehouseCr::Client
               )
             )
           end
-        elsif msg_json["op"] == "fetch_done"
+        elsif msg_json["op"] == "fetch_done" && !@joined_room
           payload = msg_json["d"]
             .as_h["room"]
             .as_h
@@ -248,30 +342,8 @@ class DogehouseCr::Client
       end
     end
 
-    spawn do
-      loop do
-        @ws.send "ping"
-        sleep PING_TIMEOUT
-      end
-    end
-
-    spawn do
-      loop do
-        if @message_queue[0]?
-          @ws.send(
-            {
-              "op" => "chat:send_msg",
-              "d"  => {
-                "tokens" => encode_message @message_queue[0],
-              },
-              "v" => "0.2.0",
-            }.to_json
-          )
-          @message_queue = @message_queue[1..]
-        end
-        sleep Time::Span.new nanoseconds: @delay
-      end
-    end
+    ping_loop
+    message_loop
   end
 
   # Run the client
@@ -280,17 +352,5 @@ class DogehouseCr::Client
     setup_run
 
     @ws.run
-  end
-
-  # This function should only be used for testing purposes
-  def test_run(time : Int)
-    setup_run
-
-    spawn do
-      @ws.run
-    end
-
-    sleep time
-    return
   end
 end

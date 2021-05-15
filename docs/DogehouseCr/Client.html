@@ -196,6 +196,18 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#ask_to_speak-instance-method" class="signature"><strong>#ask_to_speak</strong></a>
+        
+          <div class="summary"><p>Ask to speak will request to speak in whatever room the bot is in</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#auth-instance-method" class="signature"><strong>#auth</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#join_room(roomId:String)-instance-method" class="signature"><strong>#join_room</strong>(roomId : String)</a>
         
           <div class="summary"><p>Join room will join the room associated with a roomId <code></code>` client.join_room "roomid" <code></code>`</p></div>
@@ -227,6 +239,28 @@
         <a href="#message_callback=(message_callback:Message-%3ENil?)-instance-method" class="signature"><strong>#message_callback=</strong>(message_callback : Message -> Nil?)</a>
         
           <div class="summary"><p>Optional message_callback property Add a message callback function with .on_message <code></code>` client.on_message do |msg|   puts msg end <code></code>`</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#message_loop-instance-method" class="signature"><strong>#message_loop</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#mute-instance-method" class="signature"><strong>#mute</strong></a>
+        
+          <div class="summary"><p>Will mute</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#muted:Bool-instance-method" class="signature"><strong>#muted</strong> : Bool</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#muted=(muted:Bool)-instance-method" class="signature"><strong>#muted=</strong>(muted : Bool)</a>
         
       </li>
     
@@ -287,6 +321,11 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#ping_loop-instance-method" class="signature"><strong>#ping_loop</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#raw_send(msg)-instance-method" class="signature"><strong>#raw_send</strong>(msg)</a>
         
           <div class="summary"><p>Send raw messages api without wrapper</p></div>
@@ -327,9 +366,16 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#test_run(time:Int)-instance-method" class="signature"><strong>#test_run</strong>(time : Int)</a>
+        <a href="#toggle_mute-instance-method" class="signature"><strong>#toggle_mute</strong></a>
         
-          <div class="summary"><p>This function should only be used for testing purposes</p></div>
+          <div class="summary"><p>Will toggle mute on and off</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#unmute-instance-method" class="signature"><strong>#unmute</strong></a>
+        
+          <div class="summary"><p>Will unmute</p></div>
         
       </li>
     
@@ -480,6 +526,39 @@
       </div>
     </div>
   
+    <div class="entry-detail" id="ask_to_speak-instance-method">
+      <div class="signature">
+        
+        def <strong>ask_to_speak</strong>
+
+        <a class="method-permalink" href="#ask_to_speak-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Ask to speak will request to speak in whatever room the bot is in</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="auth-instance-method">
+      <div class="signature">
+        
+        def <strong>auth</strong>
+
+        <a class="method-permalink" href="#auth-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="join_room(roomId:String)-instance-method">
       <div class="signature">
         
@@ -586,6 +665,67 @@ Add a message callback function with .on_message</p>
   puts msg
 <span class="k">end</span></code></pre>
         </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="message_loop-instance-method">
+      <div class="signature">
+        
+        def <strong>message_loop</strong>
+
+        <a class="method-permalink" href="#message_loop-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="mute-instance-method">
+      <div class="signature">
+        
+        def <strong>mute</strong>
+
+        <a class="method-permalink" href="#mute-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Will mute</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="muted:Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>muted</strong> : Bool
+
+        <a class="method-permalink" href="#muted:Bool-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="muted=(muted:Bool)-instance-method">
+      <div class="signature">
+        
+        def <strong>muted=</strong>(muted : Bool)
+
+        <a class="method-permalink" href="#muted=(muted:Bool)-instance-method">#</a>
+      </div>
       
       <br/>
       <div>
@@ -774,6 +914,20 @@ on_message takes block with context parameter and String parameter</p>
       </div>
     </div>
   
+    <div class="entry-detail" id="ping_loop-instance-method">
+      <div class="signature">
+        
+        def <strong>ping_loop</strong>
+
+        <a class="method-permalink" href="#ping_loop-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="raw_send(msg)-instance-method">
       <div class="signature">
         
@@ -894,17 +1048,36 @@ This will start the message loop</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="test_run(time:Int)-instance-method">
+    <div class="entry-detail" id="toggle_mute-instance-method">
       <div class="signature">
         
-        def <strong>test_run</strong>(time : Int)
+        def <strong>toggle_mute</strong>
 
-        <a class="method-permalink" href="#test_run(time:Int)-instance-method">#</a>
+        <a class="method-permalink" href="#toggle_mute-instance-method">#</a>
       </div>
       
         <div class="doc">
           
-          <p>This function should only be used for testing purposes</p>
+          <p>Will toggle mute on and off</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="unmute-instance-method">
+      <div class="signature">
+        
+        def <strong>unmute</strong>
+
+        <a class="method-permalink" href="#unmute-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Will unmute</p>
         </div>
       
       <br/>

@@ -10,6 +10,14 @@ describe DogehouseCr do
     end
 
     client.on_message do |msg|
+      if msg.content == "ASK TO SPEAK"
+        client.ask_to_speak
+      end
+
+      if msg.content == "MUTE"
+        client.toggle_mute
+      end
+
       if msg.content.starts_with? "/echo "
         client.send msg.content[5..]
       end
@@ -32,9 +40,9 @@ describe DogehouseCr do
       p! "Joined room: #{room}"
     end
 
-    # client.on_all do |msg|
-    #   puts msg
-    # end
+    client.on_all do |msg|
+      puts msg
+    end
 
     # spawn do
     #   loop do
