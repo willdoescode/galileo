@@ -7,7 +7,7 @@ client.on_message do |msg|
   if msg.content.starts_with? "/echo "
     client.send msg.content[5..]
   end
-  p! "MSG: #{msg}"
+  puts "MSG: #{msg}"
 end
 
 client.run
