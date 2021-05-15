@@ -4,7 +4,7 @@
 
    ```yaml
    dependencies:
-     dogehouse_cr:
+     galileo:
        github: willdoescode/galileo
    ```
 
