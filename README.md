@@ -9,5 +9,5 @@
   <span> · </span>
   <a href="https://docs.will.tools/docs">Documentation</a>
   <span> · </span>
-  <a href="https://github.com/willdoescode/dogehouse_cr/tree/main/GUIDE>md">Guide</a>
+  <a href="https://github.com/willdoescode/dogehouse_cr/blob/main/GUIDE.md">Guide</a>
 </h3>
