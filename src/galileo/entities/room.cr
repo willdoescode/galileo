@@ -1,4 +1,4 @@
-class DogehouseCr::Room
+class Galileo::Room
   getter id : String
   getter name : String
   getter description : String

@@ -1,4 +1,4 @@
-class DogehouseCr::Message
+class Galileo::Message
   getter user_id : String
   getter sent_at : String
   getter is_whisper : Bool

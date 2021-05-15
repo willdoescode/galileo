@@ -5,7 +5,7 @@
    ```yaml
    dependencies:
      dogehouse_cr:
-       github: willdoescode/dogehouse_cr
+       github: willdoescode/galileo
    ```
 
 2. Run `shards install`
@@ -13,5 +13,5 @@
 # Usage
 
 ```crystal
-require "dogehouse_cr"
+require "galileo"
 ```

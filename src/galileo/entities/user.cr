@@ -1,7 +1,7 @@
 require "http/web_socket"
 require "json"
 
-class DogehouseCr::User
+class Galileo::User
   getter id : String
   getter username : String
   getter avatar_url : String

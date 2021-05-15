@@ -8,7 +8,7 @@ API_URL      = "wss://api.dogehouse.tv/socket"
 PING_TIMEOUT = 8
 
 # Base dogehouse cilent to interface with api with
-class DogehouseCr::Client
+class Galileo::Client
   # Message queue to send withing message delays
   @message_queue = Array(String).new
 
