@@ -318,7 +318,7 @@ class DogehouseCr::Client
                   msg_json["d"]
                     .as_h["msg"]
                     .as_h["tokens"]
-                    .as_a.map { |a| a.as_h }
+                    .as_a.map &.as_h
                 )
               )
             )
