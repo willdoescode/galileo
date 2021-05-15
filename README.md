@@ -1,8 +1,7 @@
 <p align="center">
-  <h1 align="center">dogehouse_cr</h1>
+  <h1 align="center">DogehouseCr</h1>
   <h2 align="center">The fastest way to make the fastest dogehouse bots.</h2>
 </p>
-
 
 <h3 align="center">
   <a href="https://github.com/willdoescode/dogehouse_cr/tree/main/examples">Examples</a>
