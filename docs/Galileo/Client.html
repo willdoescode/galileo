@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.36.1">
+<meta name="crystal_docs.project_version" content="main">
+<meta name="crystal_docs.project_name" content="galileo">
+
+
+
+<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../js/doc.js"></script>
+
+  <meta name="repository-name" content="galileo">
+  <title>Galileo::Client - galileo main</title>
+  <script type="text/javascript">
+    CrystalDocs.base_path = "../";
+  </script>
+</head>
+<body>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="../index.html">
+          galileo
+        </a>
+      </h1>
+
+      <span class="project-version">
+        main
+      </span>
+    </div>
+  </div>
+
+  <div class="search-results hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class=" " data-id="galileo/toplevel" data-name="top level namespace">
+      <a href="../toplevel.html">Top Level Namespace</a>
+      
+    </li>
+  
+  <li class="parent open current" data-id="galileo/Galileo" data-name="galileo">
+      <a href="../Galileo.html">Galileo</a>
+      
+        <ul>
+  
+  <li class=" current" data-id="galileo/Galileo/Client" data-name="galileo::client">
+      <a href="../Galileo/Client.html">Client</a>
+      
+    </li>
+  
+  <li class=" " data-id="galileo/Galileo/Message" data-name="galileo::message">
+      <a href="../Galileo/Message.html">Message</a>
+      
+    </li>
+  
+  <li class=" " data-id="galileo/Galileo/Room" data-name="galileo::room">
+      <a href="../Galileo/Room.html">Room</a>
+      
+    </li>
+  
+  <li class=" " data-id="galileo/Galileo/User" data-name="galileo::user">
+      <a href="../Galileo/User.html">User</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> Galileo::Client
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Galileo/Client.html">Galileo::Client</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+  <h2>
+    <a id="overview" class="anchor" href="#overview">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Overview
+  </h2>
+
+  <p>Base dogehouse cilent to interface with api with</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="defined-in" class="anchor" href="#defined-in">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Defined in:
+  </h2>
+  
+    
+      <a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L11" target="_blank">
+        galileo/client.cr
+      </a>
+    
+    <br/>
+  
+
+
+
+
+
+  <h2>
+    <a id="constructors" class="anchor" href="#constructors">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructors
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new(token:String,refresh_token:String)-class-method" class="signature"><strong>.new</strong>(token : String, refresh_token : String)</a>
+        
+          <div class="summary"><p>Client takes your dogehouse token and refreshToken in order to auth</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+  <h2>
+    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#all_callback:String-%3ENil?-instance-method" class="signature"><strong>#all_callback</strong> : String -> Nil?</a>
+        
+          <div class="summary"><p>All messages will be sent through this callback.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#all_callback=(all_callback:String-%3ENil?)-instance-method" class="signature"><strong>#all_callback=</strong>(all_callback : String -> Nil?)</a>
+        
+          <div class="summary"><p>All messages will be sent through this callback.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#ask_to_speak-instance-method" class="signature"><strong>#ask_to_speak</strong></a>
+        
+          <div class="summary"><p>Ask to speak will request to speak in whatever room the bot is in</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#auth-instance-method" class="signature"><strong>#auth</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#join_room(roomId:String)-instance-method" class="signature"><strong>#join_room</strong>(roomId : String)</a>
+        
+          <div class="summary"><p>Join room will join the room associated with a roomId <code></code>` client.join_room "roomid" <code></code>`</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#join_room_callback:Room-%3ENil?-instance-method" class="signature"><strong>#join_room_callback</strong> : Room -> Nil?</a>
+        
+          <div class="summary"><p>When room is joined this callback will be called <code></code>` client.on_room_join do |room|   puts room.name end <code></code>`</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#join_room_callback=(join_room_callback:Room-%3ENil?)-instance-method" class="signature"><strong>#join_room_callback=</strong>(join_room_callback : Room -> Nil?)</a>
+        
+          <div class="summary"><p>When room is joined this callback will be called <code></code>` client.on_room_join do |room|   puts room.name end <code></code>`</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#message_callback:Message-%3ENil?-instance-method" class="signature"><strong>#message_callback</strong> : Message -> Nil?</a>
+        
+          <div class="summary"><p>Optional message_callback property Add a message callback function with .on_message <code></code>` client.on_message do |msg|   puts msg end <code></code>`</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#message_callback=(message_callback:Message-%3ENil?)-instance-method" class="signature"><strong>#message_callback=</strong>(message_callback : Message -> Nil?)</a>
+        
+          <div class="summary"><p>Optional message_callback property Add a message callback function with .on_message <code></code>` client.on_message do |msg|   puts msg end <code></code>`</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#mute-instance-method" class="signature"><strong>#mute</strong></a>
+        
+          <div class="summary"><p>Will mute</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#muted:Bool-instance-method" class="signature"><strong>#muted</strong> : Bool</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#muted=(muted:Bool)-instance-method" class="signature"><strong>#muted=</strong>(muted : Bool)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new_tokens_callback:String,String-%3ENil?-instance-method" class="signature"><strong>#new_tokens_callback</strong> : String, String -> Nil?</a>
+        
+          <div class="summary"><p>If newtokens are passed this callback will be called <code></code>` client.on_new_tokens do |token, refresh_token|   puts token end <code></code>`</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new_tokens_callback=(new_tokens_callback:String,String-%3ENil?)-instance-method" class="signature"><strong>#new_tokens_callback=</strong>(new_tokens_callback : String, String -> Nil?)</a>
+        
+          <div class="summary"><p>If newtokens are passed this callback will be called <code></code>` client.on_new_tokens do |token, refresh_token|   puts token end <code></code>`</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_all(&block:String-%3ENil)-instance-method" class="signature"><strong>#on_all</strong>(&block : String -> Nil)</a>
+        
+          <div class="summary"><p>Add all callback All messages recieved in the client will be sent through this callback <code></code>` client.on_all do |msg|   puts msg end <code></code>`</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_message(&block:Message-%3ENil)-instance-method" class="signature"><strong>#on_message</strong>(&block : Message -> Nil)</a>
+        
+          <div class="summary"><p>Add a message callback on_message takes block with context parameter and String parameter <code></code>` client.on_message do |msg|   puts msg end <code></code>`</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_new_tokens(&block:String,String-%3ENil)-instance-method" class="signature"><strong>#on_new_tokens</strong>(&block : String, String -> Nil)</a>
+        
+          <div class="summary"><p>Add new tokens callback <code></code>` client.on_new_tokens do |token, refresh_token|   puts token end <code></code>`</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_ready(&block:User-%3ENil)-instance-method" class="signature"><strong>#on_ready</strong>(&block : User -> Nil)</a>
+        
+          <div class="summary"><p>Add ready callback <code></code>` client.on_ready do |user|   puts user.display_name end <code></code>`</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_room_join(&block:Room-%3ENil)-instance-method" class="signature"><strong>#on_room_join</strong>(&block : Room -> Nil)</a>
+        
+          <div class="summary"><p>Add room join callback <code></code>` client.on_room_join do |room|   puts room.name end <code></code>`</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_user_joined_room(&block:User-%3ENil)-instance-method" class="signature"><strong>#on_user_joined_room</strong>(&block : User -> Nil)</a>
+        
+          <div class="summary"><p>Add user joined room callback <code></code>` client.on_user_joined_room do |user|   puts user.display_name end <code></code>`</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#raw_send(msg)-instance-method" class="signature"><strong>#raw_send</strong>(msg)</a>
+        
+          <div class="summary"><p>Send raw messages api without wrapper</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#ready_callback:User-%3ENil?-instance-method" class="signature"><strong>#ready_callback</strong> : User -> Nil?</a>
+        
+          <div class="summary"><p>Optional on ready callback property <code></code>` client.on_ready do |user|   puts user.display_name end <code></code>`</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#ready_callback=(ready_callback:User-%3ENil?)-instance-method" class="signature"><strong>#ready_callback=</strong>(ready_callback : User -> Nil?)</a>
+        
+          <div class="summary"><p>Optional on ready callback property <code></code>` client.on_ready do |user|   puts user.display_name end <code></code>`</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#run-instance-method" class="signature"><strong>#run</strong></a>
+        
+          <div class="summary"><p>Run the client This will start the message loop</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#send(message:String)-instance-method" class="signature"><strong>#send</strong>(message : String)</a>
+        
+          <div class="summary"><p>Sends message to whatever room currently in <code></code>` client.send_message "msg" <code></code>`</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#toggle_mute-instance-method" class="signature"><strong>#toggle_mute</strong></a>
+        
+          <div class="summary"><p>Will toggle mute on and off</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#unmute-instance-method" class="signature"><strong>#unmute</strong></a>
+        
+          <div class="summary"><p>Will unmute</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#user_joined_room_callback:User-%3ENil?-instance-method" class="signature"><strong>#user_joined_room_callback</strong> : User -> Nil?</a>
+        
+          <div class="summary"><p>If a user joins a room this callback will be called <code></code>` client.on_user_joined_room do |user|   puts user.display_name end <code></code>`</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#user_joined_room_callback=(user_joined_room_callback:User-%3ENil?)-instance-method" class="signature"><strong>#user_joined_room_callback=</strong>(user_joined_room_callback : User -> Nil?)</a>
+        
+          <div class="summary"><p>If a user joins a room this callback will be called <code></code>` client.on_user_joined_room do |user|   puts user.display_name end <code></code>`</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#ws:HTTP::WebSocket-instance-method" class="signature"><strong>#ws</strong> : HTTP::WebSocket</a>
+        
+          <div class="summary"><p>Websocket connection state</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#ws=(ws:HTTP::WebSocket)-instance-method" class="signature"><strong>#ws=</strong>(ws : HTTP::WebSocket)</a>
+        
+          <div class="summary"><p>Websocket connection state</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+</div>
+
+
+  <h2>
+    <a id="constructor-detail" class="anchor" href="#constructor-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructor Detail
+  </h2>
+  
+    <div class="entry-detail" id="new(token:String,refresh_token:String)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(token : String, refresh_token : String)
+
+        <a class="method-permalink" href="#new(token:String,refresh_token:String)-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Client takes your dogehouse token and refreshToken in order to auth</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L90" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+
+  <h2>
+    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="all_callback:String->Nil?-instance-method">
+      <div class="signature">
+        
+        def <strong>all_callback</strong> : String -> Nil?
+
+        <a class="method-permalink" href="#all_callback:String-%3ENil?-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>All messages will be sent through this callback.</p>
+
+<pre><code class="language-crystal">client.on_all <span class="k">do</span> <span class="o">|</span>msg<span class="o">|</span>
+  puts msg
+<span class="k">end</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L48" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="all_callback=(all_callback:String->Nil?)-instance-method">
+      <div class="signature">
+        
+        def <strong>all_callback=</strong>(all_callback : String -> Nil?)
+
+        <a class="method-permalink" href="#all_callback=(all_callback:String-%3ENil?)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>All messages will be sent through this callback.</p>
+
+<pre><code class="language-crystal">client.on_all <span class="k">do</span> <span class="o">|</span>msg<span class="o">|</span>
+  puts msg
+<span class="k">end</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L48" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="ask_to_speak-instance-method">
+      <div class="signature">
+        
+        def <strong>ask_to_speak</strong>
+
+        <a class="method-permalink" href="#ask_to_speak-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Ask to speak will request to speak in whatever room the bot is in</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L218" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="auth-instance-method">
+      <div class="signature">
+        
+        def <strong>auth</strong>
+
+        <a class="method-permalink" href="#auth-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L74" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="join_room(roomId:String)-instance-method">
+      <div class="signature">
+        
+        def <strong>join_room</strong>(roomId : String)
+
+        <a class="method-permalink" href="#join_room(roomId:String)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Join room will join the room associated with a roomId</p>
+
+<pre><code class="language-crystal">client.join_room <span class="s">&quot;roomid&quot;</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L204" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="join_room_callback:Room->Nil?-instance-method">
+      <div class="signature">
+        
+        def <strong>join_room_callback</strong> : <a href="../Galileo/Room.html">Room</a> -> Nil?
+
+        <a class="method-permalink" href="#join_room_callback:Room-%3ENil?-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>When room is joined this callback will be called</p>
+
+<pre><code class="language-crystal">client.on_room_join <span class="k">do</span> <span class="o">|</span>room<span class="o">|</span>
+  puts room.name
+<span class="k">end</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L56" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="join_room_callback=(join_room_callback:Room->Nil?)-instance-method">
+      <div class="signature">
+        
+        def <strong>join_room_callback=</strong>(join_room_callback : <a href="../Galileo/Room.html">Room</a> -> Nil?)
+
+        <a class="method-permalink" href="#join_room_callback=(join_room_callback:Room-%3ENil?)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>When room is joined this callback will be called</p>
+
+<pre><code class="language-crystal">client.on_room_join <span class="k">do</span> <span class="o">|</span>room<span class="o">|</span>
+  puts room.name
+<span class="k">end</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L56" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="message_callback:Message->Nil?-instance-method">
+      <div class="signature">
+        
+        def <strong>message_callback</strong> : <a href="../Galileo/Message.html">Message</a> -> Nil?
+
+        <a class="method-permalink" href="#message_callback:Message-%3ENil?-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Optional message_callback property
+Add a message callback function with .on_message</p>
+
+<pre><code class="language-crystal">client.on_message <span class="k">do</span> <span class="o">|</span>msg<span class="o">|</span>
+  puts msg
+<span class="k">end</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L40" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="message_callback=(message_callback:Message->Nil?)-instance-method">
+      <div class="signature">
+        
+        def <strong>message_callback=</strong>(message_callback : <a href="../Galileo/Message.html">Message</a> -> Nil?)
+
+        <a class="method-permalink" href="#message_callback=(message_callback:Message-%3ENil?)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Optional message_callback property
+Add a message callback function with .on_message</p>
+
+<pre><code class="language-crystal">client.on_message <span class="k">do</span> <span class="o">|</span>msg<span class="o">|</span>
+  puts msg
+<span class="k">end</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L40" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="mute-instance-method">
+      <div class="signature">
+        
+        def <strong>mute</strong>
+
+        <a class="method-permalink" href="#mute-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Will mute</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L247" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="muted:Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>muted</strong> : Bool
+
+        <a class="method-permalink" href="#muted:Bool-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L18" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="muted=(muted:Bool)-instance-method">
+      <div class="signature">
+        
+        def <strong>muted=</strong>(muted : Bool)
+
+        <a class="method-permalink" href="#muted=(muted:Bool)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L18" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new_tokens_callback:String,String->Nil?-instance-method">
+      <div class="signature">
+        
+        def <strong>new_tokens_callback</strong> : String, String -> Nil?
+
+        <a class="method-permalink" href="#new_tokens_callback:String,String-%3ENil?-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>If newtokens are passed this callback will be called</p>
+
+<pre><code class="language-crystal">client.on_new_tokens <span class="k">do</span> <span class="o">|</span>token, refresh_token<span class="o">|</span>
+  puts token
+<span class="k">end</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L64" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new_tokens_callback=(new_tokens_callback:String,String->Nil?)-instance-method">
+      <div class="signature">
+        
+        def <strong>new_tokens_callback=</strong>(new_tokens_callback : String, String -> Nil?)
+
+        <a class="method-permalink" href="#new_tokens_callback=(new_tokens_callback:String,String-%3ENil?)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>If newtokens are passed this callback will be called</p>
+
+<pre><code class="language-crystal">client.on_new_tokens <span class="k">do</span> <span class="o">|</span>token, refresh_token<span class="o">|</span>
+  puts token
+<span class="k">end</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L64" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_all(&block:String->Nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_all</strong>(&block : String -> Nil)
+
+        <a class="method-permalink" href="#on_all(&block:String-%3ENil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Add all callback
+All messages recieved in the client will be sent through this callback</p>
+
+<pre><code class="language-crystal">client.on_all <span class="k">do</span> <span class="o">|</span>msg<span class="o">|</span>
+  puts msg
+<span class="k">end</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L119" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_message(&block:Message->Nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_message</strong>(&block : <a href="../Galileo/Message.html">Message</a> -> Nil)
+
+        <a class="method-permalink" href="#on_message(&block:Message-%3ENil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Add a message callback
+on_message takes block with context parameter and String parameter</p>
+
+<pre><code class="language-crystal">client.on_message <span class="k">do</span> <span class="o">|</span>msg<span class="o">|</span>
+  puts msg
+<span class="k">end</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L108" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_new_tokens(&block:String,String->Nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_new_tokens</strong>(&block : String, String -> Nil)
+
+        <a class="method-permalink" href="#on_new_tokens(&block:String,String-%3ENil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Add new tokens callback</p>
+
+<pre><code class="language-crystal">client.on_new_tokens <span class="k">do</span> <span class="o">|</span>token, refresh_token<span class="o">|</span>
+  puts token
+<span class="k">end</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L149" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_ready(&block:User->Nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_ready</strong>(&block : <a href="../Galileo/User.html">User</a> -> Nil)
+
+        <a class="method-permalink" href="#on_ready(&block:User-%3ENil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Add ready callback</p>
+
+<pre><code class="language-crystal">client.on_ready <span class="k">do</span> <span class="o">|</span>user<span class="o">|</span>
+  puts user.display_name
+<span class="k">end</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L139" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_room_join(&block:Room->Nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_room_join</strong>(&block : <a href="../Galileo/Room.html">Room</a> -> Nil)
+
+        <a class="method-permalink" href="#on_room_join(&block:Room-%3ENil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Add room join callback</p>
+
+<pre><code class="language-crystal">client.on_room_join <span class="k">do</span> <span class="o">|</span>room<span class="o">|</span>
+  puts room.name
+<span class="k">end</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L129" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_user_joined_room(&block:User->Nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_user_joined_room</strong>(&block : <a href="../Galileo/User.html">User</a> -> Nil)
+
+        <a class="method-permalink" href="#on_user_joined_room(&block:User-%3ENil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Add user joined room callback</p>
+
+<pre><code class="language-crystal">client.on_user_joined_room <span class="k">do</span> <span class="o">|</span>user<span class="o">|</span>
+  puts user.display_name
+<span class="k">end</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L159" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="raw_send(msg)-instance-method">
+      <div class="signature">
+        
+        def <strong>raw_send</strong>(msg)
+
+        <a class="method-permalink" href="#raw_send(msg)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Send raw messages api without wrapper</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L97" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="ready_callback:User->Nil?-instance-method">
+      <div class="signature">
+        
+        def <strong>ready_callback</strong> : <a href="../Galileo/User.html">User</a> -> Nil?
+
+        <a class="method-permalink" href="#ready_callback:User-%3ENil?-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Optional on ready callback property</p>
+
+<pre><code class="language-crystal">client.on_ready <span class="k">do</span> <span class="o">|</span>user<span class="o">|</span>
+  puts user.display_name
+<span class="k">end</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L31" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="ready_callback=(ready_callback:User->Nil?)-instance-method">
+      <div class="signature">
+        
+        def <strong>ready_callback=</strong>(ready_callback : <a href="../Galileo/User.html">User</a> -> Nil?)
+
+        <a class="method-permalink" href="#ready_callback=(ready_callback:User-%3ENil?)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Optional on ready callback property</p>
+
+<pre><code class="language-crystal">client.on_ready <span class="k">do</span> <span class="o">|</span>user<span class="o">|</span>
+  puts user.display_name
+<span class="k">end</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L31" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="run-instance-method">
+      <div class="signature">
+        
+        def <strong>run</strong>
+
+        <a class="method-permalink" href="#run-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Run the client
+This will start the message loop</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L357" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="send(message:String)-instance-method">
+      <div class="signature">
+        
+        def <strong>send</strong>(message : String)
+
+        <a class="method-permalink" href="#send(message:String)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Sends message to whatever room currently in</p>
+
+<pre><code class="language-crystal">client.send_message <span class="s">&quot;msg&quot;</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L167" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="toggle_mute-instance-method">
+      <div class="signature">
+        
+        def <strong>toggle_mute</strong>
+
+        <a class="method-permalink" href="#toggle_mute-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Will toggle mute on and off</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L233" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="unmute-instance-method">
+      <div class="signature">
+        
+        def <strong>unmute</strong>
+
+        <a class="method-permalink" href="#unmute-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Will unmute</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L261" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="user_joined_room_callback:User->Nil?-instance-method">
+      <div class="signature">
+        
+        def <strong>user_joined_room_callback</strong> : <a href="../Galileo/User.html">User</a> -> Nil?
+
+        <a class="method-permalink" href="#user_joined_room_callback:User-%3ENil?-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>If a user joins a room this callback will be called</p>
+
+<pre><code class="language-crystal">client.on_user_joined_room <span class="k">do</span> <span class="o">|</span>user<span class="o">|</span>
+  puts user.display_name
+<span class="k">end</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L72" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="user_joined_room_callback=(user_joined_room_callback:User->Nil?)-instance-method">
+      <div class="signature">
+        
+        def <strong>user_joined_room_callback=</strong>(user_joined_room_callback : <a href="../Galileo/User.html">User</a> -> Nil?)
+
+        <a class="method-permalink" href="#user_joined_room_callback=(user_joined_room_callback:User-%3ENil?)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>If a user joins a room this callback will be called</p>
+
+<pre><code class="language-crystal">client.on_user_joined_room <span class="k">do</span> <span class="o">|</span>user<span class="o">|</span>
+  puts user.display_name
+<span class="k">end</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L72" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="ws:HTTP::WebSocket-instance-method">
+      <div class="signature">
+        
+        def <strong>ws</strong> : HTTP::WebSocket
+
+        <a class="method-permalink" href="#ws:HTTP::WebSocket-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Websocket connection state</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L23" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="ws=(ws:HTTP::WebSocket)-instance-method">
+      <div class="signature">
+        
+        def <strong>ws=</strong>(ws : HTTP::WebSocket)
+
+        <a class="method-permalink" href="#ws=(ws:HTTP::WebSocket)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Websocket connection state</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L23" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>
