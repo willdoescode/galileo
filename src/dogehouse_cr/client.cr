@@ -51,6 +51,7 @@ class DogehouseCr::Client
   # ```
   # client.on_room_join do |room|
   #   puts room.name
+  # end
   # ```
   property join_room_callback : (Room -> Nil)?
 
@@ -58,6 +59,7 @@ class DogehouseCr::Client
   # ```
   # client.on_new_tokens do |token, refresh_token|
   #   puts token
+  # end
   # ```
   property new_tokens_callback : (String, String -> Nil)?
 
@@ -65,6 +67,7 @@ class DogehouseCr::Client
   # ```
   # client.on_user_joined_room do |user|
   #   puts user.display_name
+  # end
   # ```
   property user_joined_room_callback : (User -> Nil)?
 
@@ -121,6 +124,7 @@ class DogehouseCr::Client
   # ```
   # client.on_room_join do |room|
   #   puts room.name
+  # end
   # ```
   def on_room_join(&block : Room -> Nil)
     @room_join_callback = block
@@ -140,6 +144,7 @@ class DogehouseCr::Client
   # ```
   # client.on_new_tokens do |token, refresh_token|
   #   puts token
+  # end
   # ```
   def on_new_tokens(&block : String, String -> Nil)
     @new_tokens_callback = block
@@ -149,6 +154,7 @@ class DogehouseCr::Client
   # ```
   # client.on_user_joined_room do |user|
   #   puts user.display_name
+  # end
   # ```
   def on_user_joined_room(&block : User -> Nil)
     @user_joined_room_callback = block
@@ -162,7 +168,7 @@ class DogehouseCr::Client
     @message_queue << message
   end
 
-  def ping_loop
+  private def ping_loop
     spawn do
       loop do
         @ws.send "ping"
@@ -171,7 +177,7 @@ class DogehouseCr::Client
     end
   end
 
-  def message_loop
+  private def message_loop
     spawn do
       loop do
         if @message_queue[0]?
@@ -265,7 +271,7 @@ class DogehouseCr::Client
     @muted = false
   end
 
-  def setup_run
+  private def setup_run
     @ws.on_message do |msg|
       if !@all_callback.nil?
         @all_callback.not_nil!.call msg

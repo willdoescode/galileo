@@ -217,14 +217,14 @@
       <li class="entry-summary">
         <a href="#join_room_callback:Room-%3ENil?-instance-method" class="signature"><strong>#join_room_callback</strong> : Room -> Nil?</a>
         
-          <div class="summary"><p>When room is joined this callback will be called <code></code>` client.on_room_join do |room|   puts room.name <code></code>`</p></div>
+          <div class="summary"><p>When room is joined this callback will be called <code></code>` client.on_room_join do |room|   puts room.name end <code></code>`</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#join_room_callback=(join_room_callback:Room-%3ENil?)-instance-method" class="signature"><strong>#join_room_callback=</strong>(join_room_callback : Room -> Nil?)</a>
         
-          <div class="summary"><p>When room is joined this callback will be called <code></code>` client.on_room_join do |room|   puts room.name <code></code>`</p></div>
+          <div class="summary"><p>When room is joined this callback will be called <code></code>` client.on_room_join do |room|   puts room.name end <code></code>`</p></div>
         
       </li>
     
@@ -239,11 +239,6 @@
         <a href="#message_callback=(message_callback:Message-%3ENil?)-instance-method" class="signature"><strong>#message_callback=</strong>(message_callback : Message -> Nil?)</a>
         
           <div class="summary"><p>Optional message_callback property Add a message callback function with .on_message <code></code>` client.on_message do |msg|   puts msg end <code></code>`</p></div>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#message_loop-instance-method" class="signature"><strong>#message_loop</strong></a>
         
       </li>
     
@@ -267,14 +262,14 @@
       <li class="entry-summary">
         <a href="#new_tokens_callback:String,String-%3ENil?-instance-method" class="signature"><strong>#new_tokens_callback</strong> : String, String -> Nil?</a>
         
-          <div class="summary"><p>If newtokens are passed this callback will be called <code></code>` client.on_new_tokens do |token, refresh_token|   puts token <code></code>`</p></div>
+          <div class="summary"><p>If newtokens are passed this callback will be called <code></code>` client.on_new_tokens do |token, refresh_token|   puts token end <code></code>`</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#new_tokens_callback=(new_tokens_callback:String,String-%3ENil?)-instance-method" class="signature"><strong>#new_tokens_callback=</strong>(new_tokens_callback : String, String -> Nil?)</a>
         
-          <div class="summary"><p>If newtokens are passed this callback will be called <code></code>` client.on_new_tokens do |token, refresh_token|   puts token <code></code>`</p></div>
+          <div class="summary"><p>If newtokens are passed this callback will be called <code></code>` client.on_new_tokens do |token, refresh_token|   puts token end <code></code>`</p></div>
         
       </li>
     
@@ -295,7 +290,7 @@
       <li class="entry-summary">
         <a href="#on_new_tokens(&block:String,String-%3ENil)-instance-method" class="signature"><strong>#on_new_tokens</strong>(&block : String, String -> Nil)</a>
         
-          <div class="summary"><p>Add new tokens callback <code></code>` client.on_new_tokens do |token, refresh_token|   puts token <code></code>`</p></div>
+          <div class="summary"><p>Add new tokens callback <code></code>` client.on_new_tokens do |token, refresh_token|   puts token end <code></code>`</p></div>
         
       </li>
     
@@ -309,19 +304,14 @@
       <li class="entry-summary">
         <a href="#on_room_join(&block:Room-%3ENil)-instance-method" class="signature"><strong>#on_room_join</strong>(&block : Room -> Nil)</a>
         
-          <div class="summary"><p>Add room join callback <code></code>` client.on_room_join do |room|   puts room.name <code></code>`</p></div>
+          <div class="summary"><p>Add room join callback <code></code>` client.on_room_join do |room|   puts room.name end <code></code>`</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#on_user_joined_room(&block:User-%3ENil)-instance-method" class="signature"><strong>#on_user_joined_room</strong>(&block : User -> Nil)</a>
         
-          <div class="summary"><p>Add user joined room callback <code></code>` client.on_user_joined_room do |user|   puts user.display_name <code></code>`</p></div>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#ping_loop-instance-method" class="signature"><strong>#ping_loop</strong></a>
+          <div class="summary"><p>Add user joined room callback <code></code>` client.on_user_joined_room do |user|   puts user.display_name end <code></code>`</p></div>
         
       </li>
     
@@ -361,11 +351,6 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#setup_run-instance-method" class="signature"><strong>#setup_run</strong></a>
-        
-      </li>
-    
-      <li class="entry-summary">
         <a href="#toggle_mute-instance-method" class="signature"><strong>#toggle_mute</strong></a>
         
           <div class="summary"><p>Will toggle mute on and off</p></div>
@@ -382,14 +367,14 @@
       <li class="entry-summary">
         <a href="#user_joined_room_callback:User-%3ENil?-instance-method" class="signature"><strong>#user_joined_room_callback</strong> : User -> Nil?</a>
         
-          <div class="summary"><p>If a user joins a room this callback will be called <code></code>` client.on_user_joined_room do |user|   puts user.display_name <code></code>`</p></div>
+          <div class="summary"><p>If a user joins a room this callback will be called <code></code>` client.on_user_joined_room do |user|   puts user.display_name end <code></code>`</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#user_joined_room_callback=(user_joined_room_callback:User-%3ENil?)-instance-method" class="signature"><strong>#user_joined_room_callback=</strong>(user_joined_room_callback : User -> Nil?)</a>
         
-          <div class="summary"><p>If a user joins a room this callback will be called <code></code>` client.on_user_joined_room do |user|   puts user.display_name <code></code>`</p></div>
+          <div class="summary"><p>If a user joins a room this callback will be called <code></code>` client.on_user_joined_room do |user|   puts user.display_name end <code></code>`</p></div>
         
       </li>
     
@@ -593,7 +578,8 @@
           <p>When room is joined this callback will be called</p>
 
 <pre><code class="language-crystal">client.on_room_join <span class="k">do</span> <span class="o">|</span>room<span class="o">|</span>
-  puts room.name</code></pre>
+  puts room.name
+<span class="k">end</span></code></pre>
         </div>
       
       <br/>
@@ -615,7 +601,8 @@
           <p>When room is joined this callback will be called</p>
 
 <pre><code class="language-crystal">client.on_room_join <span class="k">do</span> <span class="o">|</span>room<span class="o">|</span>
-  puts room.name</code></pre>
+  puts room.name
+<span class="k">end</span></code></pre>
         </div>
       
       <br/>
@@ -665,20 +652,6 @@ Add a message callback function with .on_message</p>
   puts msg
 <span class="k">end</span></code></pre>
         </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="message_loop-instance-method">
-      <div class="signature">
-        
-        def <strong>message_loop</strong>
-
-        <a class="method-permalink" href="#message_loop-instance-method">#</a>
-      </div>
       
       <br/>
       <div>
@@ -746,7 +719,8 @@ Add a message callback function with .on_message</p>
           <p>If newtokens are passed this callback will be called</p>
 
 <pre><code class="language-crystal">client.on_new_tokens <span class="k">do</span> <span class="o">|</span>token, refresh_token<span class="o">|</span>
-  puts token</code></pre>
+  puts token
+<span class="k">end</span></code></pre>
         </div>
       
       <br/>
@@ -768,7 +742,8 @@ Add a message callback function with .on_message</p>
           <p>If newtokens are passed this callback will be called</p>
 
 <pre><code class="language-crystal">client.on_new_tokens <span class="k">do</span> <span class="o">|</span>token, refresh_token<span class="o">|</span>
-  puts token</code></pre>
+  puts token
+<span class="k">end</span></code></pre>
         </div>
       
       <br/>
@@ -838,7 +813,8 @@ on_message takes block with context parameter and String parameter</p>
           <p>Add new tokens callback</p>
 
 <pre><code class="language-crystal">client.on_new_tokens <span class="k">do</span> <span class="o">|</span>token, refresh_token<span class="o">|</span>
-  puts token</code></pre>
+  puts token
+<span class="k">end</span></code></pre>
         </div>
       
       <br/>
@@ -883,7 +859,8 @@ on_message takes block with context parameter and String parameter</p>
           <p>Add room join callback</p>
 
 <pre><code class="language-crystal">client.on_room_join <span class="k">do</span> <span class="o">|</span>room<span class="o">|</span>
-  puts room.name</code></pre>
+  puts room.name
+<span class="k">end</span></code></pre>
         </div>
       
       <br/>
@@ -905,22 +882,9 @@ on_message takes block with context parameter and String parameter</p>
           <p>Add user joined room callback</p>
 
 <pre><code class="language-crystal">client.on_user_joined_room <span class="k">do</span> <span class="o">|</span>user<span class="o">|</span>
-  puts user.display_name</code></pre>
+  puts user.display_name
+<span class="k">end</span></code></pre>
         </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="ping_loop-instance-method">
-      <div class="signature">
-        
-        def <strong>ping_loop</strong>
-
-        <a class="method-permalink" href="#ping_loop-instance-method">#</a>
-      </div>
       
       <br/>
       <div>
@@ -1034,20 +998,6 @@ This will start the message loop</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="setup_run-instance-method">
-      <div class="signature">
-        
-        def <strong>setup_run</strong>
-
-        <a class="method-permalink" href="#setup_run-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
     <div class="entry-detail" id="toggle_mute-instance-method">
       <div class="signature">
         
@@ -1099,7 +1049,8 @@ This will start the message loop</p>
           <p>If a user joins a room this callback will be called</p>
 
 <pre><code class="language-crystal">client.on_user_joined_room <span class="k">do</span> <span class="o">|</span>user<span class="o">|</span>
-  puts user.display_name</code></pre>
+  puts user.display_name
+<span class="k">end</span></code></pre>
         </div>
       
       <br/>
@@ -1121,7 +1072,8 @@ This will start the message loop</p>
           <p>If a user joins a room this callback will be called</p>
 
 <pre><code class="language-crystal">client.on_user_joined_room <span class="k">do</span> <span class="o">|</span>user<span class="o">|</span>
-  puts user.display_name</code></pre>
+  puts user.display_name
+<span class="k">end</span></code></pre>
         </div>
       
       <br/>
