@@ -4,6 +4,11 @@ class DogehouseCr::Message
   getter is_whisper : Bool
   getter content : String
 
-  def initialize(@user_id : String, @sent_at : String, @is_whisper : Bool, @content : String)
+  def initialize(
+    @user_id : String,
+    @sent_at : String,
+    @is_whisper : Bool,
+    @content : String
+  )
   end
 end
