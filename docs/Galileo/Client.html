@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="generator" content="Crystal Docs 0.36.1">
-<meta name="crystal_docs.project_version" content="main">
+<meta name="crystal_docs.project_version" content="main-dev">
 <meta name="crystal_docs.project_name" content="galileo">
 
 
@@ -13,7 +13,7 @@
 <script type="text/javascript" src="../js/doc.js"></script>
 
   <meta name="repository-name" content="galileo">
-  <title>Galileo::Client - galileo main</title>
+  <title>Galileo::Client - galileo main-dev</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../";
   </script>
@@ -39,7 +39,7 @@
       </h1>
 
       <span class="project-version">
-        main
+        main-dev
       </span>
     </div>
   </div>
@@ -139,9 +139,7 @@
   </h2>
   
     
-      <a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L11" target="_blank">
-        galileo/client.cr
-      </a>
+      galileo/client.cr
     
     <br/>
   
@@ -210,6 +208,25 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#get_rooms-instance-method" class="signature"><strong>#get_rooms</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#in_room:Bool-instance-method" class="signature"><strong>#in_room</strong> : Bool</a>
+        
+          <div class="summary"><p>True if bot in room, False if not</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#in_room=(in_room:Bool)-instance-method" class="signature"><strong>#in_room=</strong>(in_room : Bool)</a>
+        
+          <div class="summary"><p>True if bot in room, False if not</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#join_room(roomId:String)-instance-method" class="signature"><strong>#join_room</strong>(roomId : String)</a>
         
           <div class="summary"><p>Join room will join the room associated with a roomId <code></code>` client.join_room "roomid" <code></code>`</p></div>
@@ -254,10 +271,14 @@
       <li class="entry-summary">
         <a href="#muted:Bool-instance-method" class="signature"><strong>#muted</strong> : Bool</a>
         
+          <div class="summary"><p>True if bot is muted, False if not</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#muted=(muted:Bool)-instance-method" class="signature"><strong>#muted=</strong>(muted : Bool)</a>
+        
+          <div class="summary"><p>True if bot is muted, False if not</p></div>
         
       </li>
     
@@ -339,6 +360,18 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#room_loop-instance-method" class="signature"><strong>#room_loop</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#rooms:Array(Room)-instance-method" class="signature"><strong>#rooms</strong> : Array(Room)</a>
+        
+          <div class="summary"><p>Returns all the available rooms in array Updated every 2 seconds</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#run-instance-method" class="signature"><strong>#run</strong></a>
         
           <div class="summary"><p>Run the client This will start the message loop</p></div>
@@ -349,6 +382,18 @@
         <a href="#send(message:String)-instance-method" class="signature"><strong>#send</strong>(message : String)</a>
         
           <div class="summary"><p>Sends message to whatever room currently in <code></code>` client.send_message "msg" <code></code>`</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#set_speaking(b:Bool)-instance-method" class="signature"><strong>#set_speaking</strong>(b : Bool)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#speaking:Bool-instance-method" class="signature"><strong>#speaking</strong> : Bool</a>
+        
+          <div class="summary"><p>If bot is speaking will be true else will be false</p></div>
         
       </li>
     
@@ -450,8 +495,6 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L90" target="_blank">View source</a>]
-        
       </div>
     </div>
   
@@ -489,8 +532,6 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L48" target="_blank">View source</a>]
-        
       </div>
     </div>
   
@@ -514,8 +555,6 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L48" target="_blank">View source</a>]
-        
       </div>
     </div>
   
@@ -535,8 +574,6 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L218" target="_blank">View source</a>]
-        
       </div>
     </div>
   
@@ -551,7 +588,57 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L74" target="_blank">View source</a>]
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="get_rooms-instance-method">
+      <div class="signature">
+        
+        def <strong>get_rooms</strong>
+
+        <a class="method-permalink" href="#get_rooms-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="in_room:Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>in_room</strong> : Bool
+
+        <a class="method-permalink" href="#in_room:Bool-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>True if bot in room, False if not</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="in_room=(in_room:Bool)-instance-method">
+      <div class="signature">
+        
+        def <strong>in_room=</strong>(in_room : Bool)
+
+        <a class="method-permalink" href="#in_room=(in_room:Bool)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>True if bot in room, False if not</p>
+        </div>
+      
+      <br/>
+      <div>
         
       </div>
     </div>
@@ -573,8 +660,6 @@
       
       <br/>
       <div>
-        
-          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L204" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -599,8 +684,6 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L56" target="_blank">View source</a>]
-        
       </div>
     </div>
   
@@ -623,8 +706,6 @@
       
       <br/>
       <div>
-        
-          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L56" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -650,8 +731,6 @@ Add a message callback function with .on_message</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L40" target="_blank">View source</a>]
-        
       </div>
     </div>
   
@@ -676,8 +755,6 @@ Add a message callback function with .on_message</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L40" target="_blank">View source</a>]
-        
       </div>
     </div>
   
@@ -697,8 +774,6 @@ Add a message callback function with .on_message</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L247" target="_blank">View source</a>]
-        
       </div>
     </div>
   
@@ -710,10 +785,13 @@ Add a message callback function with .on_message</p>
         <a class="method-permalink" href="#muted:Bool-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>True if bot is muted, False if not</p>
+        </div>
+      
       <br/>
       <div>
-        
-          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L18" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -726,10 +804,13 @@ Add a message callback function with .on_message</p>
         <a class="method-permalink" href="#muted=(muted:Bool)-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>True if bot is muted, False if not</p>
+        </div>
+      
       <br/>
       <div>
-        
-          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L18" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -754,8 +835,6 @@ Add a message callback function with .on_message</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L64" target="_blank">View source</a>]
-        
       </div>
     </div>
   
@@ -778,8 +857,6 @@ Add a message callback function with .on_message</p>
       
       <br/>
       <div>
-        
-          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L64" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -805,8 +882,6 @@ All messages recieved in the client will be sent through this callback</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L119" target="_blank">View source</a>]
-        
       </div>
     </div>
   
@@ -831,8 +906,6 @@ on_message takes block with context parameter and String parameter</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L108" target="_blank">View source</a>]
-        
       </div>
     </div>
   
@@ -855,8 +928,6 @@ on_message takes block with context parameter and String parameter</p>
       
       <br/>
       <div>
-        
-          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L149" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -881,8 +952,6 @@ on_message takes block with context parameter and String parameter</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L139" target="_blank">View source</a>]
-        
       </div>
     </div>
   
@@ -905,8 +974,6 @@ on_message takes block with context parameter and String parameter</p>
       
       <br/>
       <div>
-        
-          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L129" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -931,8 +998,6 @@ on_message takes block with context parameter and String parameter</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L159" target="_blank">View source</a>]
-        
       </div>
     </div>
   
@@ -951,8 +1016,6 @@ on_message takes block with context parameter and String parameter</p>
       
       <br/>
       <div>
-        
-          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L97" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -977,8 +1040,6 @@ on_message takes block with context parameter and String parameter</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L31" target="_blank">View source</a>]
-        
       </div>
     </div>
   
@@ -1002,7 +1063,39 @@ on_message takes block with context parameter and String parameter</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L31" target="_blank">View source</a>]
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="room_loop-instance-method">
+      <div class="signature">
+        
+        def <strong>room_loop</strong>
+
+        <a class="method-permalink" href="#room_loop-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="rooms:Array(Room)-instance-method">
+      <div class="signature">
+        
+        def <strong>rooms</strong> : Array(<a href="../Galileo/Room.html">Room</a>)
+
+        <a class="method-permalink" href="#rooms:Array(Room)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns all the available rooms in array
+Updated every 2 seconds</p>
+        </div>
+      
+      <br/>
+      <div>
         
       </div>
     </div>
@@ -1023,8 +1116,6 @@ This will start the message loop</p>
       
       <br/>
       <div>
-        
-          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L357" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1047,7 +1138,38 @@ This will start the message loop</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L167" target="_blank">View source</a>]
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="set_speaking(b:Bool)-instance-method">
+      <div class="signature">
+        
+        def <strong>set_speaking</strong>(b : Bool)
+
+        <a class="method-permalink" href="#set_speaking(b:Bool)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="speaking:Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>speaking</strong> : Bool
+
+        <a class="method-permalink" href="#speaking:Bool-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>If bot is speaking will be true else will be false</p>
+        </div>
+      
+      <br/>
+      <div>
         
       </div>
     </div>
@@ -1068,8 +1190,6 @@ This will start the message loop</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L233" target="_blank">View source</a>]
-        
       </div>
     </div>
   
@@ -1088,8 +1208,6 @@ This will start the message loop</p>
       
       <br/>
       <div>
-        
-          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L261" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1114,8 +1232,6 @@ This will start the message loop</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L72" target="_blank">View source</a>]
-        
       </div>
     </div>
   
@@ -1139,8 +1255,6 @@ This will start the message loop</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L72" target="_blank">View source</a>]
-        
       </div>
     </div>
   
@@ -1160,8 +1274,6 @@ This will start the message loop</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L23" target="_blank">View source</a>]
-        
       </div>
     </div>
   
@@ -1180,8 +1292,6 @@ This will start the message loop</p>
       
       <br/>
       <div>
-        
-          [<a href="https://github.com/willdoescode/galileo/blob/c5b60089ade6fea6bf7a2ff8248a36c3334fd373/src/galileo/client.cr#L23" target="_blank">View source</a>]
         
       </div>
     </div>

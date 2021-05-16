@@ -15,9 +15,18 @@ class Galileo::Client
   # The chat delay withing rooms
   @delay = 1000000
 
+  # True if bot is muted, False if not
   property muted : Bool = true
 
-  @in_room = false
+  # True if bot in room, False if not
+  property in_room : Bool = false
+
+  # Returns all the available rooms in array
+  # Updated every 2 seconds
+  getter rooms : Array(Room) = Array(Room).new
+
+  # If bot is speaking will be true else will be false
+  getter speaking : Bool = false
 
   # Websocket connection state
   property ws : HTTP::WebSocket
@@ -168,6 +177,21 @@ class Galileo::Client
     @message_queue << message
   end
 
+  def set_speaking(b : Bool)
+    @ws.send(
+      {
+        "op" => SET_SPEAKER,
+        "p"  => {
+          "active": b,
+        },
+        "v"       => "0.2.0",
+        "fetchId" => "speaking_res",
+      }.to_json
+    )
+
+    @speaking = !@speaking
+  end
+
   private def ping_loop
     spawn do
       loop do
@@ -185,7 +209,7 @@ class Galileo::Client
             {
               "op" => "chat:send_msg",
               "d"  => {
-                "tokens" => encode_message @message_queue[0],
+                "tokens" => Message.encode @message_queue[0],
               },
               "v" => "0.2.0",
             }.to_json
@@ -204,11 +228,12 @@ class Galileo::Client
   def join_room(roomId : String)
     @ws.send(
       {
-        "op" => "join_room_and_get_info",
-        "d"  => {
+        "op" => "room:join",
+        "p"  => {
           "roomId" => roomId,
         },
-        "fetchId" => "[uuid]",
+        "ref" => "join_response",
+        "v"   => "0.2.0",
       }.to_json
     )
     @joined_room = true
@@ -271,6 +296,28 @@ class Galileo::Client
     @muted = false
   end
 
+  def get_rooms
+    @ws.send(
+      {
+        "op" => TOP_ROOMS,
+        "p"  => {
+          "data" => 0,
+        },
+        "version" => "0.2.0",
+        "ref"     => "room_response",
+      }.to_json
+    )
+  end
+
+  def room_loop
+    spawn do
+      loop do
+        get_rooms
+        sleep 2
+      end
+    end
+  end
+
   private def setup_run
     @ws.on_message do |msg|
       if !@all_callback.nil?
@@ -292,6 +339,10 @@ class Galileo::Client
               User.from_json(m)
             )
           end
+        elsif msg_json["op"] == "room:get_top:reply"
+          @rooms = msg_json["p"]
+            .as_h["rooms"]
+            .as_a.map { |room| Room.from_json room.as_h }
         elsif msg_json["op"] == "new_user_join_room"
           m = msg_json["d"]
             .as_h["user"]
@@ -320,7 +371,7 @@ class Galileo::Client
                 m["userId"].as_s,
                 m["sentAt"].as_s,
                 m["isWhisper"].as_bool,
-                decode_message(
+                Message.decode(
                   msg_json["d"]
                     .as_h["msg"]
                     .as_h["tokens"]
@@ -329,27 +380,21 @@ class Galileo::Client
               )
             )
           end
-        elsif msg_json["op"] == "fetch_done" && !@joined_room
-          payload = msg_json["d"]
-            .as_h["room"]
+        elsif msg_json["op"].as_s == "room:join:reply"
+          payload = msg_json["p"]
             .as_h
           if !@room_join_callback.nil?
-            @room_join_callback.not_nil!.call(
-              Room.new(
-                payload["id"].as_s,
-                payload["name"].as_s,
-                payload["description"].as_s,
-                payload["isPrivate"].as_bool
-              )
-            )
+            @room_join_callback.not_nil!.call Room.from_json payload
           end
-          @delay = payload["chatThrottle"].as_i * 1000000
+          # @delay = payload["chatThrottle"].as_i * 1000000
+          @in_room = true
         end
       end
     end
 
     ping_loop
     message_loop
+    room_loop
   end
 
   # Run the client

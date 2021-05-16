@@ -48,7 +48,7 @@ class Galileo::User
       m["username"].as_s,
       m["avatarUrl"].as_s,
       m["bannerUrl"].as_s? ? m["bannerUrl"].as_s : "",
-      m["bio"].as_s,
+      m["bio"].as_s? ? m["bio"].as_s : "",
       m["online"].as_bool,
       m["staff"].as_bool,
       m["lastOnline"].as_s,

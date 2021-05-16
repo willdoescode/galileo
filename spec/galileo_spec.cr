@@ -7,15 +7,21 @@ describe Galileo do
 
     client.on_ready do |bot|
       puts bot.display_name
+      client.ask_to_speak
     end
 
     client.on_message do |msg|
+      puts "ROOMS: #{client.rooms}"
       if msg.content == "ASK TO SPEAK"
         client.ask_to_speak
       end
 
       if msg.content == "MUTE"
         client.toggle_mute
+      end
+
+      if msg.content == "SPEAK"
+        client.set_speaking !client.speaking
       end
 
       if msg.content.starts_with? "/echo "
@@ -29,7 +35,7 @@ describe Galileo do
     end
 
     client.on_user_joined_room do |user|
-      client.send "#{user.display_name} joined the room"
+      client.send "@#{user.username} joined the room"
     end
 
     # client.on_ping do |context|
@@ -37,7 +43,7 @@ describe Galileo do
     # end
 
     client.on_room_join do |room|
-      p! "Joined room: #{room}"
+      puts "Joined room: #{room.name}"
     end
 
     client.on_all do |msg|
@@ -46,7 +52,7 @@ describe Galileo do
 
     # spawn do
     #   loop do
-    #     client.send_message "@IvanCodes"
+    #     client.toggle_mute
     #   end
     # end
     client.run
