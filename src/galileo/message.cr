@@ -13,13 +13,31 @@ class Galileo::Message
   end
 
   def self.encode(message : String)
+    block_started = false
+
     message.split(" ").map do |word|
       if word.starts_with? "@"
         {type: "mention", value: word[1..]}
       elsif word.starts_with? "https"
         {type: "link", value: word}
+      elsif word.starts_with? "`"
+        if word.ends_with? "`"
+          {type: "block", value: word[1..word[1..].rindex("`")]}
+        else
+          block_started = true
+          {type: "block", value: word[1..]}
+        end
+      elsif word.ends_with? "`"
+        block_started = false
+        {type: "block", value: word[..word.rindex("`").not_nil! - 1]}
+      elsif word.starts_with?(":") && word.ends_with? ":"
+        {type: "emote", value: word[1..word.size]}
       else
-        {type: "text", value: word}
+        if block_started
+          {type: "block", value: word}
+        else
+          {type: "text", value: word}
+        end
       end
     end
   end
@@ -28,8 +46,10 @@ class Galileo::Message
     message.map do |word|
       if word["t"] == "mention"
         "@#{word["v"].as_s}"
-      elsif word["t"] == "link"
-        word["v"].as_s
+      elsif word["t"] == "block"
+        "`#{word["v"].as_s}`"
+      elsif word["t"] == "emote"
+        ":#{word["v"].as_s}:"
       else
         word["v"].as_s
       end

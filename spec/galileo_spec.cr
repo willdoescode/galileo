@@ -43,7 +43,13 @@ describe Galileo do
     client.on_room_join do |room|
       puts "Joined room: #{room.name}"
       client.ask_to_speak
-      client.set_role "raised_hand", "f41a017d-0adc-4034-bb38-cf12c804a37b"
+      client.send "normal text test"
+      # spawn do
+      #   loop do
+      #     client.set_role "raised_hand", "c8799756-7438-45b1-96fe-20f6d3a28b75"
+      #     sleep 1
+      #   end
+      # end
     end
 
     client.on_all do |msg|
