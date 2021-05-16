@@ -6,8 +6,6 @@ describe Galileo do
     client.join_room ENV["ROOM_ID"]
 
     client.on_ready do |bot|
-      puts bot.display_name
-      client.ask_to_speak
     end
 
     client.on_message do |msg|
@@ -44,6 +42,8 @@ describe Galileo do
 
     client.on_room_join do |room|
       puts "Joined room: #{room.name}"
+      client.ask_to_speak
+      client.set_role "raised_hand", "f41a017d-0adc-4034-bb38-cf12c804a37b"
     end
 
     client.on_all do |msg|

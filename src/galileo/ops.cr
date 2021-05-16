@@ -30,9 +30,11 @@ ASK_TO_SPEAK = "ask_to_speak"
 HAND_RAISED  = "hand_raised"
 ADD_SPEAKER  = "add_speaker"
 SET_LISTENER = "set_listener"
+SET_ROLE     = "room:set_role"
 
 GET_CURRENT_ROOM_USERS      = "get_current_room_users"
 GET_CURRENT_ROOM_USERS_DONE = "get_current_room_users_done"
+CREATE_ROOM                 = "room:create"
 
 SEND_ROOM_CHAT_MSG = "send_room_chat_msg"
 

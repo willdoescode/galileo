@@ -14,6 +14,8 @@ class Galileo::Client
   # Message queue to send withing message delays
   @message_queue = Array(String).new
 
+  @myself : User? = nil
+
   # The chat delay withing rooms (measured in nanoseconds)
   property delay = 1000000
 
@@ -93,6 +95,21 @@ class Galileo::Client
         "reconnectToVoice" => false,
         "muted"            => true,
         "platform"         => "dogehouse_cr",
+      }.to_json
+    )
+  end
+
+  # Takes a role "raised_hand", "listener", "speaker" and an optional userId which will default to the bot userId
+  def set_role(role : String, userId : String?)
+    @ws.send(
+      {
+        "op" => SET_ROLE,
+        "p"  => {
+          "role"   => role,
+          "userId" => userId.nil? ? @myself.not_nil!.id : userId.not_nil!,
+        },
+        "v"   => "0.2.0",
+        "ref" => "[uuid]",
       }.to_json
     )
   end
@@ -191,7 +208,7 @@ class Galileo::Client
       }.to_json
     )
 
-    @speaking = !@speaking
+    @speaking = b
   end
 
   private def ping_loop
@@ -311,6 +328,27 @@ class Galileo::Client
     )
   end
 
+  # Will create room with given name description and privacy option
+  # Privacy options are limited to "public" and "private"
+  def create_room(
+    name : String,
+    description : String = "",
+    privacy : String = "public"
+  )
+    @ws.send(
+      {
+        "op" => CREATE_ROOM,
+        "p"  => {
+          "name"        => name,
+          "description" => description,
+          "privacy"     => privacy,
+        },
+        "version" => "0.2.0",
+        "ref"     => "[uuid]",
+      }.to_json
+    )
+  end
+
   private def room_loop
     spawn do
       loop do
@@ -321,6 +359,8 @@ class Galileo::Client
   end
 
   private def setup_run
+    room_loop
+
     @ws.on_message do |msg|
       if !@all_callback.nil?
         @all_callback.not_nil!.call msg
@@ -336,11 +376,11 @@ class Galileo::Client
           m = msg_json["d"]
             .as_h["user"]
             .as_h
+          user = User.from_json(m)
           if !@ready_callback.nil?
-            @ready_callback.not_nil!.call(
-              User.from_json(m)
-            )
+            @ready_callback.not_nil!.call user
           end
+          @myself = user
         elsif msg_json["op"] == "room:get_top:reply"
           @rooms = msg_json["p"]
             .as_h["rooms"]
@@ -382,7 +422,9 @@ class Galileo::Client
               )
             )
           end
-        elsif msg_json["op"].as_s == "room:join:reply"
+        elsif msg_json["op"] == "room-created"
+          join_room msg_json["d"].as_h["roomId"].as_s
+        elsif msg_json["op"] == "room:join:reply"
           payload = msg_json["p"]
             .as_h
           if !@room_join_callback.nil?
@@ -396,7 +438,6 @@ class Galileo::Client
 
     ping_loop
     message_loop
-    room_loop
   end
 
   # Run the client

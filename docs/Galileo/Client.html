@@ -208,6 +208,13 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#create_room(name:String,description:String=&quot;&quot;,privacy:String=&quot;public&quot;)-instance-method" class="signature"><strong>#create_room</strong>(name : String, description : String = <span class="s">&quot;&quot;</span>, privacy : String = <span class="s">&quot;public&quot;</span>)</a>
+        
+          <div class="summary"><p>Will create room with given name description and privacy option Privacy options are limited to "public" and "private"</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#delay:Int32-instance-method" class="signature"><strong>#delay</strong> : Int32</a>
         
           <div class="summary"><p>The chat delay withing rooms (measured in nanoseconds)</p></div>
@@ -391,6 +398,13 @@
         <a href="#send(message:String)-instance-method" class="signature"><strong>#send</strong>(message : String)</a>
         
           <div class="summary"><p>Sends message to whatever room currently in <code></code>` client.send_message "msg" <code></code>`</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#set_role(role:String,userId:String?)-instance-method" class="signature"><strong>#set_role</strong>(role : String, userId : String?)</a>
+        
+          <div class="summary"><p>Takes a role "raised_hand", "listener", "speaker" and an optional userId which will default to the bot userId</p></div>
         
       </li>
     
@@ -593,6 +607,26 @@
 
         <a class="method-permalink" href="#auth-instance-method">#</a>
       </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="create_room(name:String,description:String=&quot;&quot;,privacy:String=&quot;public&quot;)-instance-method">
+      <div class="signature">
+        
+        def <strong>create_room</strong>(name : String, description : String = <span class="s">&quot;&quot;</span>, privacy : String = <span class="s">&quot;public&quot;</span>)
+
+        <a class="method-permalink" href="#create_room(name:String,description:String=&quot;&quot;,privacy:String=&quot;public&quot;)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Will create room with given name description and privacy option
+Privacy options are limited to "public" and "private"</p>
+        </div>
       
       <br/>
       <div>
@@ -1166,6 +1200,25 @@ This will start the message loop</p>
           <p>Sends message to whatever room currently in</p>
 
 <pre><code class="language-crystal">client.send_message <span class="s">&quot;msg&quot;</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="set_role(role:String,userId:String?)-instance-method">
+      <div class="signature">
+        
+        def <strong>set_role</strong>(role : String, userId : String?)
+
+        <a class="method-permalink" href="#set_role(role:String,userId:String?)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Takes a role "raised_hand", "listener", "speaker" and an optional userId which will default to the bot userId</p>
         </div>
       
       <br/>
