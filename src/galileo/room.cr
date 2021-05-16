@@ -10,7 +10,7 @@ class Galileo::Room
     @id : String,
     @name : String,
     @description : String,
-    @is_private : Bool,
+    @is_private : Bool
   )
   end
 

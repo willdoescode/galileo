@@ -1,8 +1,7 @@
 require "http/web_socket"
 require "spec"
 require "json"
-require "./utils/*"
-require "./entities/*"
+require "./*"
 
 API_URL      = "wss://api.dogehouse.tv/socket"
 PING_TIMEOUT = 8
@@ -12,8 +11,8 @@ class Galileo::Client
   # Message queue to send withing message delays
   @message_queue = Array(String).new
 
-  # The chat delay withing rooms
-  @delay = 1000000
+  # The chat delay withing rooms (measured in nanoseconds)
+  property delay = 1000000
 
   # True if bot is muted, False if not
   property muted : Bool = true
@@ -182,7 +181,7 @@ class Galileo::Client
       {
         "op" => SET_SPEAKER,
         "p"  => {
-          "active": b,
+          "active" => b,
         },
         "v"       => "0.2.0",
         "fetchId" => "speaking_res",
@@ -309,7 +308,7 @@ class Galileo::Client
     )
   end
 
-  def room_loop
+  private def room_loop
     spawn do
       loop do
         get_rooms

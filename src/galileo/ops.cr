@@ -7,7 +7,7 @@ ERROR = "error"
 BOT_JOINED_AS_SPEAKER = "you-joined-as-speaker"
 BOT_JOINED_AS_PEER    = "you-joined-as-peer"
 BOT_LEFT_ROOM         = "you_left_room"
-SET_SPEAKER = "room:set_active_speaker"
+SET_SPEAKER           = "room:set_active_speaker"
 
 BOT_IS_NOW_SPEAKER = "you-are-now-a-speaker"
 
