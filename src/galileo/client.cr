@@ -84,6 +84,13 @@ class Galileo::Client
   # ```
   property user_joined_room_callback : (User -> Nil)?
 
+  # Client takes your dogehouse token and refreshToken in order to auth
+  def initialize(@token : String, @refresh_token : String)
+    @ws = HTTP::WebSocket.new(URI.parse(API_URL))
+
+    auth
+  end
+
   def auth
     @ws.send(
       {
@@ -112,13 +119,6 @@ class Galileo::Client
         "ref" => "[uuid]",
       }.to_json
     )
-  end
-
-  # Client takes your dogehouse token and refreshToken in order to auth
-  def initialize(@token : String, @refresh_token : String)
-    @ws = HTTP::WebSocket.new(URI.parse(API_URL))
-
-    auth
   end
 
   # Send raw messages api without wrapper
