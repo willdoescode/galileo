@@ -1,7 +1,10 @@
 require "http/web_socket"
 require "spec"
 require "json"
-require "./*"
+require "./message.cr"
+require "./user.cr"
+require "./room.cr"
+require "./ops.cr"
 
 API_URL      = "wss://api.dogehouse.tv/socket"
 PING_TIMEOUT = 8
